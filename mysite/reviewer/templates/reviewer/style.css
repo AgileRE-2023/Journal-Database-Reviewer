@@ -68,12 +68,20 @@
 
 /* recommended reviewers css */
 
+.recommended-reviewers-page{
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+}
+
 .recommended-reviewers-container{
+    width: 1200px;
+    display: block;
     margin-top: 30px;
     margin-bottom: 30px;
-    margin-left: 100px;
-    margin-right: 100px;
-    padding-bottom: 500px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 30px;
     padding-top: 0px;
     padding-right: 0px;
     padding-left: 0px;
@@ -81,8 +89,9 @@
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.left-column-1,.right-column-1{
-    flex-basis: 50%;
+.recrev-container-1{
+    display: grid;
+    grid-template-columns: 70% 30%;
 }
 
 .left-column-1{
@@ -101,21 +110,42 @@
 }
 
 .reviewer-list{
-    width: 500px;
+    width: 700px;
     margin-top: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 30px;
     margin-left: 0px;
     margin-right: 0px;
+    border: solid black;
+    border-width: 2px;
     border-radius: 16px;
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.10);
     display: grid; 
-    grid-template-columns: 10% 70% 20%; 
+    place-items: center;
+    /*pembagian container*/
+    grid-template-columns: 15% 34% 12% 12% 12% 15%; 
+}
+
+.reviewer-list img{
+    width: 48px;
+    display: grid;
+    place-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 
-.reviewer-list-content{
-    /*ini buat text dalemnya*/
+.reviewer-list-content h2{
+    font-family: 'Helvetica';
+    font-size: 16px;
+    font-weight: 600;
+    color: black;
+}
 
+.reviewer-list-content h3{
+    font-family: 'Helvetica';
+    font-size: 14px;
+    font-weight: 200;
+    color: black;
 }
 
 .choose-button{
@@ -123,6 +153,114 @@
 }
 
 .primary-btn{
+    height: 100%;
     justify-content: end;
     float: right;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 28px;
+    padding-left: 28px;
+    margin-right: 0px;
+    outline: none;
+    border: 2px solid black;
+    border-radius: 0px 14px 14px 0px;
+    cursor: pointer;
+    background: black;
+    font-size: 16px;
+}
+
+.recrev-container-2{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.reviewer-detail-box{
+    display: grid;
+    border: solid black;
+    border-width: 2px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.10);
+    width: 300px;
+    padding: 15px;
+    margin-right: 30px;
+}
+
+.grid-1{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    place-items: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-1 img{
+    width: 60px;
+}
+
+.grid-1-1-nama{
+    font-family: Helvetica;
+    font-size: 10;
+    font-weight: 600;
+}
+
+.grid-1-1-affilation{
+    font-family: Helvetica;
+    font-size: 12;
+    font-weight: 400;
+}
+
+.grid-3{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.Research-interest{
+    font-family: Helvetica;
+    font-size: 12;
+    font-weight: 400;
+    margin-right: 7px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.second-btn{
+    height: 30px;
+    justify-content: center;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-right: 0px;
+    margin-top: 23px;
+    outline: none;
+    border: 2px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    background: white;
+    font-size: 16px;
+}
+
+.recrev-container-3{
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.third-btn{
+    height: 30px;
+    justify-content: center;
+    float: left;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-right: 0px;
+    margin-top: 23px;
+    outline: none;
+    border: 2px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    background: white;
+    font-size: 16px;
 }
