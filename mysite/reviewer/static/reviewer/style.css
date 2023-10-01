@@ -1,0 +1,60 @@
+/* JOURNAL SUBMISSION FORM CSS */
+
+.journal_submission_page{
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.journal_submission_container{
+    width: 900px;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: grid;
+    /*pembagian container*/
+    grid-template-columns: 60% 40%;
+}
+.journal_submission_left{
+    padding: 30px;
+}
+.journal_submission_container h1{
+    font-family: 'Helvetica';
+    font-size: 24px;
+    font-weight: 600;
+    color: black;
+}
+
+.journal_submission_container h2{
+    font-family: 'Helvetica';
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+}
+
+.journal_submission_left input{
+    padding: 5px;
+    border-radius: 7px;
+    border-width: 1px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.input-1{
+    width: 400px;
+}
+
+.input-2{
+    width: 150px;
+}
+
+.input-3{
+    width: 400px;
+    height: 200px;
+}
+
+.journal_submission_right{
+    background-color: #D4D4D4;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    align-items: center;
+}
