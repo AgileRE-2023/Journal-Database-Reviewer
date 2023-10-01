@@ -1,0 +1,128 @@
+/*file uploader css*/
+
+.file-uploader-top-title{
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+}
+.center-column h1{
+    font-family: 'EB Garamond', serif;
+    font-size: 64px;
+    font-weight: 400;
+    color: black;
+    text-align: center;
+}
+
+.center-column h2{
+    font-family: 'EB Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: black;
+    opacity: 0.5;
+    text-align: center;
+}
+
+.file-uploader-container{
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+}
+
+.file-upload-box{
+    width: 900px;
+    height: 400px;
+    background-color: #D4D4D4;
+    text-align: center;
+    margin: 10px;
+    border-radius: 16px;
+}
+
+.file-uploader-container img{
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    
+
+}
+
+.file-uploader-container h3{
+    font-family: 'EB Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: black;
+    opacity: 1;
+    margin: 0;
+    margin: 0;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+/* recommended reviewers css */
+
+.recommended-reviewers-container{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-bottom: 500px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.left-column-1,.right-column-1{
+    flex-basis: 50%;
+}
+
+.left-column-1{
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    justify-content: start;
+}
+
+.left-column-1 h1{
+    font-family: 'Helvetica';
+    font-size: 24px;
+    font-weight: 600;
+    color: black;
+}
+
+.reviewer-list{
+    width: 500px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: grid; 
+    grid-template-columns: 10% 70% 20%; 
+}
+
+
+.reviewer-list-content{
+    /*ini buat text dalemnya*/
+
+}
+
+.choose-button{
+    justify-content: end;
+}
+
+.primary-btn{
+    justify-content: end;
+    float: right;
+}
