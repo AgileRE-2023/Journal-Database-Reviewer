@@ -127,6 +127,10 @@ STATIC_URL = '/static/'
 
 # Additional directories to search for static files
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'mysite/mysite/reviewer/static',
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
