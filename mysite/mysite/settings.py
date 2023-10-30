@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "reviewer"
+    "reviewer",
+    "master",
+    "scrapping"
 ]
 
 MIDDLEWARE = [
@@ -128,7 +130,7 @@ STATIC_URL = '/static/'
 # Additional directories to search for static files
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'mysite/mysite/reviewer/static',
+    BASE_DIR / 'reviewer/static',
 ]
 
 # Default primary key field type
