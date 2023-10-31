@@ -130,7 +130,7 @@ STATIC_URL = '/static/'
 # Additional directories to search for static files
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'reviewer/static',
+    BASE_DIR / 'static',
 ]
 
 # Default primary key field type
