@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "reviewer",
-    "master",
-    "scrapping",
+    "apps.reviewer",
+    "apps.master",
+    "apps.scrapping",
 ]
 
 AUTH_USER_MODEL = "master.Editor"
