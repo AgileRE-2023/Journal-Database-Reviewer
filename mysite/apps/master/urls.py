@@ -4,5 +4,6 @@ from . import views
 
 
 urlpatterns = [
-    path("", view=views.index)
+    path("", view=views.index),
+    path('input-data-ojs-file/', views.inputDataOJSFile, name='input_data_ojs_file'),
 ]
