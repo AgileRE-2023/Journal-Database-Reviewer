@@ -38,15 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-<<<<<<< HEAD
     "reviewer",
     "master",
     "scrapping",
-=======
-    "apps.reviewer",
-    "apps.master",
-    "apps.scrapping"
->>>>>>> 33677705c6ac5cf6ae5ab2e55b5ac2b863d99354
 ]
 
 AUTH_USER_MODEL = "master.Editor"
@@ -66,7 +60,7 @@ ROOT_URLCONF = "mysite.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR / 'templates')],
+        "DIRS": [os.path.join(BASE_DIR / "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
