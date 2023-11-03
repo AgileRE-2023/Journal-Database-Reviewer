@@ -5,5 +5,5 @@ from . import views
 
 urlpatterns = [
     path("", view=views.index),
-    path('upload-ojs/', views.inputDataOJSFile, name='input_data_ojs_file'),
+    path('upload-ojs/', views.inputDataOJSFile, name='inputDataOJSFile'),
 ]
