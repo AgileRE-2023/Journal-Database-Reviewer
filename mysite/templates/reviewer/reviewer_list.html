@@ -52,7 +52,7 @@
                             </div>
                         </div>
                         <div>
-                            <img src="images/edit.png">
+                            <img src="images/edit.png" href="#" onclick="toggle()">
                         </div>
                         <div>
                             <img src="images/delete.png">
@@ -72,7 +72,7 @@
                             </div>
                         </div>
                         <div>
-                            <img src="images/edit.png">
+                            <img src="images/edit.png" href="#" onclick="toggle()">
                         </div>
                         <div>
                             <img src="images/delete.png">
@@ -92,7 +92,7 @@
                             </div>
                         </div>
                         <div>
-                            <img src="images/edit.png">
+                            <img src="images/edit.png" href="#" onclick="toggle()">
                         </div>
                         <div>
                             <img src="images/delete.png">
@@ -115,7 +115,7 @@
                             </div>
                         </div>
                         <div>
-                            <img src="images/edit.png">
+                            <img src="images/edit.png" href="#" onclick="toggle()">
                         </div>
                         <div>
                             <img src="images/delete.png">
@@ -135,7 +135,7 @@
                             </div>
                         </div>
                         <div>
-                            <img src="images/edit.png">
+                            <img src="images/edit.png" href="#" onclick="toggle()">
                         </div>
                         <div>
                             <img src="images/delete.png">
@@ -155,7 +155,7 @@
                             </div>
                         </div>
                         <div>
-                            <img src="images/edit.png">
+                            <img src="images/edit.png" href="#" onclick="toggle()">
                         </div>
                         <div>
                             <img src="images/delete.png">
@@ -177,7 +177,7 @@
                             </div>
                         </div>
                         <div>
-                            <img src="images/edit.png">
+                            <img src="images/edit.png" href="#" onclick="toggle()">
                         </div>
                         <div>
                             <img src="images/delete.png">
@@ -197,7 +197,7 @@
                             </div>
                         </div>
                         <div>
-                            <img src="images/edit.png">
+                            <img src="images/edit.png" href="#" onclick="toggle()">
                         </div>
                         <div>
                             <img src="images/delete.png">
@@ -217,7 +217,7 @@
                             </div>
                         </div>
                         <div>
-                            <img src="images/edit.png">
+                            <img src="images/edit.png" href="#" onclick="toggle()">
                         </div>
                         <div>
                             <img src="images/delete.png">
@@ -239,7 +239,7 @@
                             </div>
                         </div>
                         <div>
-                            <img src="images/edit.png">
+                            <img src="images/edit.png" href="#" onclick="toggle()">
                         </div>
                         <div>
                             <img src="images/delete.png">
@@ -259,7 +259,7 @@
                             </div>
                         </div>
                         <div>
-                            <img src="images/edit.png">
+                            <img src="images/edit.png" href="#" onclick="toggle()">
                         </div>
                         <div>
                             <img src="images/delete.png">
@@ -279,7 +279,7 @@
                             </div>
                         </div>
                         <div>
-                            <img src="images/edit.png">
+                            <img src="images/edit.png" href="#" onclick="toggle()">
                         </div>
                         <div>
                             <img src="images/delete.png">
@@ -295,7 +295,7 @@
             <div class="reviewer-list-bot">
                 <div class="back-button">
                     <button type="button" class="third-btn">
-                        <a href="#" onclick="toggle()" style="color:black; text-decoration: none;">Back</a>
+                        <a href="#" style="color:black; text-decoration: none;">Back</a>
                 </div>
             </div>
         </div>
@@ -304,7 +304,7 @@
         <!-- atas -->
         <div class="popup-top">
             <div class="popup-close">
-                <img src="images/closebutton.png"> <!-- placeholder icon -->
+                <!-- placeholder icon -->
             </div>
             <img src="images/reviewericon.png" href="#" onclick="toggle()"> <!-- placeholder icon -->
         </div>
@@ -355,7 +355,9 @@
     <script type="text/javascript">
         function toggle(){
             var blur = document.getElementById('blur');
-            blur.classList.toggle('active')
+            blur.classList.toggle('active');
+            var popup = document.getElementById('popup');
+            popup.classList.toggle('active');
         }
     </script>
 

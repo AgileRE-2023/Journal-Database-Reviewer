@@ -80,7 +80,14 @@
 
 .reviewer-data-box img{
     margin-left: 0px;
+    cursor: pointer;
 }
+
+.reviewer-data-box img:hover{
+    margin-left: 0px;
+    cursor: pointer;
+}
+
 
 .reviewer-name{
     display: grid;
@@ -142,7 +149,17 @@
     background: #fff;
     border: 2px solid black;
     border-radius: 16px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
 
+}
+
+#popup.active{
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
 }
 
 .popup-top{
