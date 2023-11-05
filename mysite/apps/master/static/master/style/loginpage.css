@@ -1,0 +1,144 @@
+html {
+    font-size: 62.5%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+input {
+    border: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.loginPage {
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+h1 {
+    font-size: 70px;
+    font-weight: 200;
+    line-height: 1.2575;
+    color: #000000;
+    font-family: Garamond, 'Source Sans Pro';
+    white-space: nowrap;
+}
+
+h2 {
+    margin-bottom: 40px;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.2575;
+    color: rgba(0, 0, 0, 0.5);
+    font-family: Garamond, 'Source Sans Pro';
+    white-space: nowrap;
+}
+
+h3 {
+    margin: 0px 0px 30px 3.2px;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1.2575;
+    color: #000000;
+    font-family: Garamond, 'Source Sans Pro';
+    white-space: nowrap;
+}
+
+.loginBox {
+    box-sizing: border-box;
+    padding: 50px 81.6px 100px 78.4px;
+    width: 640px;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.25);
+    background-color: #ffffff;
+    border-radius: 16px;
+    margin: 0 auto;
+}
+
+.email,
+.password {
+    padding: 20.8px 36.8px 17.6px 36.8px;
+}
+
+#id_email,
+#id_password {
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.2575;
+    color: rgba(0, 0, 0, 0.5);
+    font-family: Garamond, 'Source Sans Pro';
+    white-space: nowrap;
+    border: solid 0.1rem #000000;
+    border-radius: 3rem;
+    flex-shrink: 0;
+}
+
+.forgotPass {
+    margin: 10px 0px 20.8px 40px;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1.2575;
+    color: #000000;
+    font-family: Garamond, 'Source Sans Pro';
+    white-space: nowrap;
+    flex-shrink: 0;
+    text-decoration: none;
+    float: left;
+}
+
+.loginBtn {
+    box-sizing: border-box;
+    padding: 0.7rem 0rem 0.2rem 0rem;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1.2575;
+    color: #ffffff;
+    font-family: Garamond, 'Source Sans Pro';
+    white-space: nowrap;
+    border: solid 0.1rem #000000;
+    background-color: #000000;
+    border-radius: 3rem;
+    flex-shrink: 0;
+}
+
+.error-text {
+    display: none;
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.forgotPass:hover .error-text {
+    display: block;
+}
+
+.email:invalid {
+    border-color: red;
+}
+
+.password:invalid {
+    border-color: red;
+}

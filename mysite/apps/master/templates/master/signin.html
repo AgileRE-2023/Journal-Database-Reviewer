@@ -1,20 +1,40 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login First!</title>
-  </head>
-  <body>
-    <div>Airlangga Journal Database Reviewer</div>
-    <div>"Discovering Knowledge, One Review at a Time."</div>
-    <form action="" method="POST" style="display: flex; flex-direction: column">
-      {% csrf_token %}
-      <div>Sign in</div>
-      {{ form.email }}
-      {{ form.password }}
-      {{error}}
-      <button type="submit">Sign In</button>
-    </form>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login Page</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Garamond%3A400%2C700" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
+  <link rel="stylesheet" href="{% static 'master/style/loginpage.css' %}" />
+</head>
+
+<body>
+  <div class="loginPage">
+    <h1>Airlangga Journal Database Reviewer</h1>
+    <h2>"Discovering Knowledge, One Review at a Time."</h2>
+    <div class="loginBox">
+      <h3>Sign In</h3>
+      <form id="flogin" action="" method="post">
+        {% csrf_token %}
+        <div class="email">
+          {{form.email}}
+        </div>
+        <div class="password">
+          {{form.password}}
+        </div>
+        <div>
+          <a href="" class="forgotPass">Forgot Password?</a>
+        </div>
+        <div>
+          <button type="submit" class="loginBtn">Sign In</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
 </html>
