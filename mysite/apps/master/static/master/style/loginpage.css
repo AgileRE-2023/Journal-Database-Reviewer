@@ -31,17 +31,18 @@ body {
 }
 
 h1 {
-    font-size: 70px;
+    font-size: 48px;
     font-weight: 200;
     line-height: 1.2575;
     color: #000000;
     font-family: Garamond, 'Source Sans Pro';
     white-space: nowrap;
+    margin-bottom: 10px;
 }
 
 h2 {
     margin-bottom: 40px;
-    font-size: 30px;
+    font-size: 24px;
     font-weight: 400;
     line-height: 1.2575;
     color: rgba(0, 0, 0, 0.5);
@@ -51,7 +52,7 @@ h2 {
 
 h3 {
     margin: 0px 0px 30px 3.2px;
-    font-size: 60px;
+    font-size: 41px;
     font-weight: 700;
     line-height: 1.2575;
     color: #000000;
@@ -61,17 +62,12 @@ h3 {
 
 .loginBox {
     box-sizing: border-box;
-    padding: 50px 81.6px 100px 78.4px;
-    width: 640px;
-    box-shadow: 0 0 16px rgba(0, 0, 0, 0.25);
+    padding: 40px 40px 80px 40px;
+    width: 32rem;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
     background-color: #ffffff;
     border-radius: 16px;
     margin: 0 auto;
-}
-
-.email,
-.password {
-    padding: 20.8px 36.8px 17.6px 36.8px;
 }
 
 #id_email,
@@ -80,18 +76,20 @@ h3 {
     width: 100%;
     overflow: hidden;
     position: relative;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 400;
-    line-height: 1.2575;
+    line-height: 38px;
     color: rgba(0, 0, 0, 0.5);
     font-family: Garamond, 'Source Sans Pro';
     white-space: nowrap;
     border: solid 0.1rem #000000;
     border-radius: 3rem;
     flex-shrink: 0;
+    margin-bottom: 20px;
+    padding-left: 2rem;
 }
 
-.forgotPass {
+/* .forgotPass {
     margin: 10px 0px 20.8px 40px;
     font-size: 23px;
     font-weight: 400;
@@ -102,6 +100,18 @@ h3 {
     flex-shrink: 0;
     text-decoration: none;
     float: left;
+} */
+
+.bottom-section {
+    margin-top: 30px;
+
+}
+
+.error-message {
+    color: red;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-bottom: 10px;
 }
 
 .loginBtn {
@@ -110,9 +120,9 @@ h3 {
     width: 100%;
     overflow: hidden;
     position: relative;
-    font-size: 3.2rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    line-height: 1.2575;
+    line-height: 38px;
     color: #ffffff;
     font-family: Garamond, 'Source Sans Pro';
     white-space: nowrap;
@@ -120,25 +130,4 @@ h3 {
     background-color: #000000;
     border-radius: 3rem;
     flex-shrink: 0;
-}
-
-.error-text {
-    display: none;
-    color: red;
-    font-size: 12px;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-.forgotPass:hover .error-text {
-    display: block;
-}
-
-.email:invalid {
-    border-color: red;
-}
-
-.password:invalid {
-    border-color: red;
 }

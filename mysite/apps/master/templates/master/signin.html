@@ -1,40 +1,43 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login Page</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Garamond%3A400%2C700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"
+    />
+    <link rel="stylesheet" href="{% static 'master/style/loginpage.css' %}" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" href="/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Login Page</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Garamond%3A400%2C700" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
-  <link rel="stylesheet" href="{% static 'master/style/loginpage.css' %}" />
-</head>
-
-<body>
-  <div class="loginPage">
-    <h1>Airlangga Journal Database Reviewer</h1>
-    <h2>"Discovering Knowledge, One Review at a Time."</h2>
-    <div class="loginBox">
-      <h3>Sign In</h3>
-      <form id="flogin" action="" method="post">
-        {% csrf_token %}
-        <div class="email">
-          {{form.email}}
-        </div>
-        <div class="password">
-          {{form.password}}
-        </div>
-        <div>
-          <a href="" class="forgotPass">Forgot Password?</a>
-        </div>
-        <div>
-          <button type="submit" class="loginBtn">Sign In</button>
-        </div>
-      </form>
+  <body>
+    <div class="loginPage">
+      <h1>Airlangga Journal Database Reviewer</h1>
+      <h2>"Discovering Knowledge, One Review at a Time."</h2>
+      <div class="loginBox">
+        <h3>Sign in</h3>
+        <form id="flogin" action="" method="post">
+          {% csrf_token %}
+          <div>{{form.email}}</div>
+          <div>{{form.password}}</div>
+          {% comment %}
+          <div>
+            <a href="" class="forgotPass">Forgot Password?</a>
+          </div>
+          {% endcomment %}
+          <div class="bottom-section">
+            <p class="error-message">{{ error }}</p>
+            <button type="submit" class="loginBtn">Sign in</button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>
