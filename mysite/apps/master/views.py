@@ -42,5 +42,5 @@ def inputDataOJSFile(request):
         messages.success(request, 'File Excel berhasil diunggah dan data disimpan.')
         return redirect('upload data OJS')
 
-    return render(request, 'myapp/upload data OJS.html')
+    return render(request, 'reviewer/upload data OJS.html')
 
