@@ -7,7 +7,7 @@ from .forms import EditorForm
 
 # Create your views here.
 def index(request):
-    return render(request, "master/landing.html")
+    return redirect("signin")
 
 
 def signin(request):
@@ -17,6 +17,7 @@ def signin(request):
         password = form.data["password"]
         user = authenticate(request, email=email, password=password)
         if user is not None:
+            # breakpoint()
             login(request, user)
             return redirect("dashboard")
         else:

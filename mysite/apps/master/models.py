@@ -1,13 +1,14 @@
-from uuid import uuid4
+import uuid
+from django.contrib import admin
 from django.db import models
 from django.urls import reverse
-from django.contrib.auth.models import AbstractBaseUser, AbstractUser
+from django.contrib.auth.models import AbstractBaseUser
 from .manager import EditorManager
 
 
 # Create your models here.
 class Editor(AbstractBaseUser):
-    editor_id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
+    editor_id = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid1)
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=254, unique=True)
     password = models.TextField()
@@ -63,3 +64,5 @@ class Reviewer(models.Model):
 
     def get_absolute_url(self):
         return reverse("Reviewer_detail", kwargs={"pk": self.pk})
+    
+admin.site.register(Editor)
