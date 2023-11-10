@@ -1,4 +1,4 @@
-import uuid
+from uuid import uuid4
 from django.contrib import admin
 from django.db import models
 from django.urls import reverse
@@ -8,7 +8,7 @@ from .manager import EditorManager
 
 # Create your models here.
 class Editor(AbstractBaseUser):
-    editor_id = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid1)
+    editor_id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=254, unique=True)
     password = models.TextField()
