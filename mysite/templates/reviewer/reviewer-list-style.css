@@ -51,14 +51,27 @@
 .top-grid-1-2{
     /*yg kiri*/
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     margin-right: 12px;
+}
+
+.top-grid-1-2 i{
+    margin-left: 0px;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.top-grid-1-2 i:hover{
+    margin-left: 0px;
+    cursor: pointer;
 }
 
 /*bagian tengah*/
 
 .reviewer-list-mid{
     display: grid;
+    align-items: center;
 }
 
 .list-grid-1{
@@ -68,7 +81,10 @@
 
 .reviewer-data-box{
     display: grid;
-    grid-template-columns: 15% 65% 10% 10%;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    grid-template-columns: 10% 60% 15% 15%;
     border: solid black;
     border-width: 2px;
     border-radius: 8px;
@@ -79,11 +95,24 @@
 }
 
 .reviewer-data-box img{
+    /*gajadi dipake*/
     margin-left: 0px;
     cursor: pointer;
 }
 
 .reviewer-data-box img:hover{
+    /*gajadi dipake*/
+    margin-left: 0px;
+    cursor: pointer;
+}
+
+.reviewer-data-box i{
+    margin-left: 0px;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.reviewer-data-box i:hover{
     margin-left: 0px;
     cursor: pointer;
 }
