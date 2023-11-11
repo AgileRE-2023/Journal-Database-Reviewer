@@ -71,4 +71,4 @@ def signin(request):
 
 
 def dashboard(request):
-    return render(request, "master/dashboard.html")
+    return render(request, "editor/dashboard.html")
