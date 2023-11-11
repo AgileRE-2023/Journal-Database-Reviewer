@@ -87,9 +87,11 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "Journal-Reviewer",
-        "HOST" : "localhost",
-        "PORT" : "3306"
+        "NAME": "journal-reviewer",
+        "USER": "root",
+        "PASSWORD": "",
+        "HOST": "localhost",
+        "PORT": "3306",
     }
 }
 

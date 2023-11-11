@@ -1,7 +1,8 @@
 from uuid import uuid4
+from django.contrib import admin
 from django.db import models
 from django.urls import reverse
-from django.contrib.auth.models import AbstractBaseUser, AbstractUser
+from django.contrib.auth.models import AbstractBaseUser
 from .manager import EditorManager
 
 
@@ -31,7 +32,7 @@ class Editor(AbstractBaseUser):
 
 
 class Upload_Data(models.Model):
-    upload_id = models.UUIDField(primary_key=True, editable=False)
+    upload_id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
     upload_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     editor_id = models.ForeignKey(Editor, on_delete=models.SET_NULL, null=True)
 
@@ -47,7 +48,7 @@ class Upload_Data(models.Model):
 
 
 class Reviewer(models.Model):
-    reviewer_id = models.UUIDField(primary_key=True, editable=False)
+    reviewer_id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=254)
     scopus_id = models.CharField(max_length=255)
@@ -63,3 +64,5 @@ class Reviewer(models.Model):
 
     def get_absolute_url(self):
         return reverse("Reviewer_detail", kwargs={"pk": self.pk})
+    
+admin.site.register(Editor)
