@@ -26,6 +26,11 @@ def inputDataOJSFile(request):
         # Baca file Excel dan ambil data yang dibutuhkan
         df = pd.read_excel(excel_file)
         selected_columns = ["name", "email", "scopus_id", "scholar_id", "other"]
+        
+        if not set(selected_columns).issubset(df.columns):
+            messages.info(request, 'Kolom pada file excel tidak sesuai, gunakan penamaan kolom setidaknya name*, email*, scopus_id, scholar_id, dan other')
+            return redirect('input_data_ojs_file')
+        
         df = df[selected_columns]
 
         for index, row in df.iterrows():
