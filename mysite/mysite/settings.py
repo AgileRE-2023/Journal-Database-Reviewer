@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "apps.reviewer",
     "apps.master",
-    "apps.scrapping"
+    "apps.scrapping",
+    "tailwind",
+    "theme",
+    "django_browser_reload"
 ]
 
 MIDDLEWARE = [
@@ -51,6 +54,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
+
 ]
 
 ROOT_URLCONF = "mysite.urls"
@@ -79,10 +84,12 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "Journal-Reviewer",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "journal-reviewer",
+        "USER": "postgres",
+        "PASSWORD": "wlrb",
         "HOST" : "localhost",
-        "PORT" : "3306"
+        "PORT" : "5432"
     }
 }
 
@@ -139,3 +146,11 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+TAILWIND_APP_NAME = 'theme'
+
+NPM_BIN_PATH = r"C:\Users\willi\AppData\Roaming\npm\npm.cmd"
