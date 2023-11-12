@@ -11,7 +11,7 @@ class Editor(AbstractBaseUser, PermissionsMixin):
     editor_id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=254, unique=True)
-    password = models.TextField()
+    password = models.CharField(max_length=128)
     created_at = models.DateField(auto_now=False, auto_now_add=True)
     updated_at = models.DateField(auto_now=True, auto_now_add=False)
     is_staff = models.BooleanField(default=False)
