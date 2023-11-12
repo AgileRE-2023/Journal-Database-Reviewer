@@ -1,0 +1,152 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airlangga Journal Database Reviewer</title>
+    <link rel="stylesheet" href="{% static 'reviewer/style/reviewer-list-style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="reviewer-list-page" id="blur">
+
+        <div class="reviewer-list-box">
+
+            <!-- BAGIAN ATAS (reviewers sama button add)-->
+            <div class="reviewer-list-top">
+                <div class="top-grid-1">
+
+                    <div class="top-grid-1-1">
+                        <div class="reviwer-list-title">
+                            Reviewers
+                        </div>
+                    </div>
+
+                    <div class="top-grid-1-2">
+                        <i class="fa-regular fa-square-plus fa-2xl"></i>
+                    </div>
+
+                </div>
+                
+            </div>
+            
+            <!-- TENGAH REVIEWERS LIST (3 kolom)-->
+            <div class="reviewer-list-mid">
+                {% with ''|center:4 as y %}
+                {% for j in y %}        
+                <div class="list-grid-1">
+                    {% with ''|center:3 as x %}
+                    {% for i in x %}
+                    <div class="reviewer-data-box"> <!-- start -->
+                        <div>
+                            {% comment %} <img src="images/Vector.png"> <!-- placeholder icon --> {% endcomment %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <path d="M36 42C36 38.8174 34.7357 35.7652 32.4853 33.5147C30.2348 31.2643 27.1826 30 24 30C20.8174 30 17.7652 31.2643 15.5147 33.5147C13.2643 35.7652 12 38.8174 12 42" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M24 30C28.4183 30 32 26.4183 32 22C32 17.5817 28.4183 14 24 14C19.5817 14 16 17.5817 16 22C16 26.4183 19.5817 30 24 30Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M38 6H10C7.79086 6 6 7.79086 6 10V38C6 40.2091 7.79086 42 10 42H38C40.2091 42 42 40.2091 42 38V10C42 7.79086 40.2091 6 38 6Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                        </div>
+                        <div class="reviewer-name">
+                            <div class="reviewer-name-top">
+                                Dr. Laura Cloudsmith
+                            </div>
+                            <div class="reviewer-name-bot">
+                                Cloud Research Institute
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fa-regular fa-pen-to-square fa-2xl" href="#" onclick="toggle()"></i>
+                        </div>
+                        <div>
+                            <i class="fa-regular fa-trash-can fa-2xl" href="#"></i>
+                        </div>
+                    </div>  <!-- End  -->
+                    {% endfor %}
+                    {% endwith %}
+                </div>
+                {% endfor %}
+                {% endwith %}
+            </div>
+            
+            <!-- BAWAH button back-->
+            <div class="reviewer-list-bot">
+                <div class="back-button">
+                    <button type="button" class="third-btn">
+                        <a href="{% url "dashboard" %}" style="color:black; text-decoration: none;">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="popup">
+        <!-- atas -->
+        <div class="popup-top">
+            <div class="popup-close">
+                <!-- placeholder icon -->
+            </div>
+            <img src="images/usericon.png" href="#" onclick="toggle()"> <!-- placeholder icon -->
+        </div>
+        <!-- form tengah -->
+        <div class="popup-mid">
+            <div class="form">
+                <form>
+                    <div class="input-form">
+                        <label for="fname">Full name</label>
+                        :
+                        <input type="text" id="fname" name="fname">
+
+                        <label for="email">Email</label>
+                        :
+                        <input type="email" id="email" name="email">
+
+                        <label for="institution">Institution</label>
+                        :
+                        <input type="text" id="institution" name="institution">
+
+                        <label for="scopusid">Scopus ID</label>
+                        :
+                        <input type="text" id="scopusid" name="scopusid">
+
+                        <label for="scholarid">Scholar ID</label>
+                        :
+                        <input type="text" id="scholarid" name="scholarid">
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <!-- bawah -->
+        <div class="popup-bot">
+            <div class="back-button">
+                <button type="button" class="third-btn">
+                    <a href="#" onclick="toggle()" style="color:black; text-decoration: none;">Cancel</a>
+            </div>
+            <div class="save-button">
+                <button type="button" class="third-btn">
+                    <a href="#" onclick="toggle()" style="color:black; text-decoration: none;">Save</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        function toggle(){
+            var blur = document.getElementById('blur');
+            blur.classList.toggle('active');
+            var popup = document.getElementById('popup');
+            popup.classList.toggle('active');
+        }
+    </script>
+
+    
+
+</body>
+</html>

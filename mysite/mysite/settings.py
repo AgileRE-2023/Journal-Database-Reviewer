@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "apps.reviewer",
     "apps.master",
     "apps.scrapping",
+    "apps.editor",
     "tailwind",
     "theme",
     "django_browser_reload"

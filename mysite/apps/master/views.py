@@ -57,7 +57,7 @@ def signin(request):
         if user is not None:
             # breakpoint()
             login(request, user)
-            return redirect("dashboard")
+            return redirect("editor/dashboard")
         else:
             return render(
                 request,
@@ -68,7 +68,3 @@ def signin(request):
         form = EditorForm()
 
     return render(request, "master/signin.html", {"form": EditorForm()})
-
-
-def dashboard(request):
-    return render(request, "editor/dashboard.html")
