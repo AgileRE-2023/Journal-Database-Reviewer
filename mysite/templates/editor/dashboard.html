@@ -75,9 +75,11 @@
           <div class="w-32 border-2 py-1 rounded-lg border-black">
             View Data
           </div>
-          <div class="w-32 border-2 py-1 rounded-lg border-black">
-            Update Now
-          </div>
+          <a href="{% url "upload data OJS" %}">
+            <div class="w-32 border-2 py-1 rounded-lg border-black">
+              Update Now
+            </div>
+          </a>
         </div>
       </div>
 
@@ -240,26 +242,35 @@
     </section>
 
     <!-- Logout Button -->
-    <div class="absolute top-12 right-12">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-log-out w-14"
-      >
-        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-        <polyline points="16 17 21 12 16 7" />
-        <line
-          x1="21"
-          x2="9"
-          y1="12"
-          y2="12"
-        />
-      </svg>
-    </div>
+    <form id="logout-form" action="{% url "logout" %}" method="post">
+      {% csrf_token %}
+      <div class="absolute top-12 right-12" onclick="logout()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-log-out w-14"
+        >
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+          <polyline points="16 17 21 12 16 7" />
+          <line
+            x1="21"
+            x2="9"
+            y1="12"
+            y2="12"
+          />
+        </svg>
+      </div>
+    </form>
   </body>
+<script>
+  function logout(){
+    const logoutForm = document.getElementById("logout-form")
+    logoutForm.submit()
+  }
+</script>
 </html>

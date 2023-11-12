@@ -18,7 +18,9 @@
                 <img src="{% static 'reviewer/images/ojss.png' %}" onclick="document.getElementById('myFile').click();" alt="Click to select a file" width="120" height="150">
                 <p class="image-description">Upload OJS Data Here</p>
             </div>
-            <button type="button" id="back-button">Back</button>
+            <a href="{% url "dashboard" %}">
+                <button type="button" id="back-button">Back</button>
+            </a>
             <input type="submit" value="Save and Continue"></input>
         </form>
     </div>

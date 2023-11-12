@@ -3,7 +3,7 @@ from django.contrib import messages
 from .models import Upload_Data, Editor, Reviewer
 import pandas as pd
 from django.utils import timezone
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .forms import EditorForm
 
 
@@ -57,7 +57,7 @@ def signin(request):
         if user is not None:
             # breakpoint()
             login(request, user)
-            return redirect("editor/dashboard")
+            return redirect("dashboard")
         else:
             return render(
                 request,
@@ -68,3 +68,6 @@ def signin(request):
         form = EditorForm()
 
     return render(request, "master/signin.html", {"form": EditorForm()})
+
+def signout(request):
+    logout(request)
