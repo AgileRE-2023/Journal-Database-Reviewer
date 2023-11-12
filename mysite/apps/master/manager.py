@@ -18,9 +18,8 @@ class EditorManager(BaseUserManager):
         user = self.create_user(
             email,
             password=password,
-            is_superuser = True
+            is_superuser = True,
+            is_staff = True
         )
-        user.staff = True
-        user.admin = True
         user.save(using=self._db)
         return user
