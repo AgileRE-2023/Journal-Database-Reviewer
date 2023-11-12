@@ -1,10 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Airlangga Journal Database Reviewer</title>
-    <link rel="stylesheet" href="reviewer-list-style.css">
+    <link rel="stylesheet" href="{% static 'reviewer/style/reviewer-list-style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,11 +40,19 @@
             
             <!-- TENGAH REVIEWERS LIST (3 kolom)-->
             <div class="reviewer-list-mid">
+                {% with ''|center:4 as y %}
+                {% for j in y %}        
                 <div class="list-grid-1">
-
-                    <div class="reviewer-data-box">
+                    {% with ''|center:3 as x %}
+                    {% for i in x %}
+                    <div class="reviewer-data-box"> <!-- start -->
                         <div>
-                            <img src="images/Vector.png"> <!-- placeholder icon -->
+                            {% comment %} <img src="images/Vector.png"> <!-- placeholder icon --> {% endcomment %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <path d="M36 42C36 38.8174 34.7357 35.7652 32.4853 33.5147C30.2348 31.2643 27.1826 30 24 30C20.8174 30 17.7652 31.2643 15.5147 33.5147C13.2643 35.7652 12 38.8174 12 42" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M24 30C28.4183 30 32 26.4183 32 22C32 17.5817 28.4183 14 24 14C19.5817 14 16 17.5817 16 22C16 26.4183 19.5817 30 24 30Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M38 6H10C7.79086 6 6 7.79086 6 10V38C6 40.2091 7.79086 42 10 42H38C40.2091 42 42 40.2091 42 38V10C42 7.79086 40.2091 6 38 6Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
                         </div>
                         <div class="reviewer-name">
                             <div class="reviewer-name-top">
@@ -58,236 +68,12 @@
                         <div>
                             <i class="fa-regular fa-trash-can fa-2xl" href="#"></i>
                         </div>
-                    </div>
-
-                    <div class="reviewer-data-box">
-                        <div>
-                            <img src="images/Vector.png"> <!-- placeholder icon -->
-                        </div>
-                        <div class="reviewer-name">
-                            <div class="reviewer-name-top">
-                                Dr. Laura Cloudsmith
-                            </div>
-                            <div class="reviewer-name-bot">
-                                Cloud Research Institute
-                            </div>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-pen-to-square fa-2xl" href="#" onclick="toggle()"></i>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-trash-can fa-2xl" href="#"></i>
-                        </div>
-                    </div>
-
-                    <div class="reviewer-data-box">
-                        <div>
-                            <img src="images/Vector.png"> <!-- placeholder icon -->
-                        </div>
-                        <div class="reviewer-name">
-                            <div class="reviewer-name-top">
-                                Dr. Laura Cloudsmith
-                            </div>
-                            <div class="reviewer-name-bot">
-                                Cloud Research Institute
-                            </div>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-pen-to-square fa-2xl" href="#" onclick="toggle()"></i>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-trash-can fa-2xl" href="#"></i>
-                        </div>
-                    </div>
-
-                    
+                    </div>  <!-- End  -->
+                    {% endfor %}
+                    {% endwith %}
                 </div>
-                <div class="list-grid-1">
-                    <div class="reviewer-data-box">
-                        <div>
-                            <img src="images/Vector.png"> <!-- placeholder icon -->
-                        </div>
-                        <div class="reviewer-name">
-                            <div class="reviewer-name-top">
-                                Dr. Laura Cloudsmith
-                            </div>
-                            <div class="reviewer-name-bot">
-                                Cloud Research Institute
-                            </div>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-pen-to-square fa-2xl" href="#" onclick="toggle()"></i>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-trash-can fa-2xl" href="#"></i>
-                        </div>
-                    </div>
-
-                    <div class="reviewer-data-box">
-                        <div>
-                            <img src="images/Vector.png"> <!-- placeholder icon -->
-                        </div>
-                        <div class="reviewer-name">
-                            <div class="reviewer-name-top">
-                                Dr. Laura Cloudsmith
-                            </div>
-                            <div class="reviewer-name-bot">
-                                Cloud Research Institute
-                            </div>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-pen-to-square fa-2xl" href="#" onclick="toggle()"></i>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-trash-can fa-2xl" href="#"></i>
-                        </div>
-                    </div>
-
-                    <div class="reviewer-data-box">
-                        <div>
-                            <img src="images/Vector.png"> <!-- placeholder icon -->
-                        </div>
-                        <div class="reviewer-name">
-                            <div class="reviewer-name-top">
-                                Dr. Laura Cloudsmith
-                            </div>
-                            <div class="reviewer-name-bot">
-                                Cloud Research Institute
-                            </div>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-pen-to-square fa-2xl" href="#" onclick="toggle()"></i>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-trash-can fa-2xl" href="#"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="list-grid-1">
-                    <div class="reviewer-data-box">
-                        <div>
-                            <img src="images/Vector.png"> <!-- placeholder icon -->
-                        </div>
-                        <div class="reviewer-name">
-                            <div class="reviewer-name-top">
-                                Dr. Laura Cloudsmith
-                            </div>
-                            <div class="reviewer-name-bot">
-                                Cloud Research Institute
-                            </div>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-pen-to-square fa-2xl" href="#" onclick="toggle()"></i>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-trash-can fa-2xl" href="#"></i>
-                        </div>
-                    </div>
-
-                    <div class="reviewer-data-box">
-                        <div>
-                            <img src="images/Vector.png"> <!-- placeholder icon -->
-                        </div>
-                        <div class="reviewer-name">
-                            <div class="reviewer-name-top">
-                                Dr. Laura Cloudsmith
-                            </div>
-                            <div class="reviewer-name-bot">
-                                Cloud Research Institute
-                            </div>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-pen-to-square fa-2xl" href="#" onclick="toggle()"></i>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-trash-can fa-2xl" href="#"></i>
-                        </div>
-                    </div>
-
-                    <div class="reviewer-data-box">
-                        <div>
-                            <img src="images/Vector.png"> <!-- placeholder icon -->
-                        </div>
-                        <div class="reviewer-name">
-                            <div class="reviewer-name-top">
-                                Dr. Laura Cloudsmith
-                            </div>
-                            <div class="reviewer-name-bot">
-                                Cloud Research Institute
-                            </div>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-pen-to-square fa-2xl" href="#" onclick="toggle()"></i>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-trash-can fa-2xl" href="#"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="list-grid-1">
-                    <div class="reviewer-data-box">
-                        <div>
-                            <img src="images/Vector.png"> <!-- placeholder icon -->
-                        </div>
-                        <div class="reviewer-name">
-                            <div class="reviewer-name-top">
-                                Dr. Laura Cloudsmith
-                            </div>
-                            <div class="reviewer-name-bot">
-                                Cloud Research Institute
-                            </div>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-pen-to-square fa-2xl" href="#" onclick="toggle()"></i>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-trash-can fa-2xl" href="#"></i>
-                        </div>
-                    </div>
-
-                    <div class="reviewer-data-box">
-                        <div>
-                            <img src="images/Vector.png"> <!-- placeholder icon -->
-                        </div>
-                        <div class="reviewer-name">
-                            <div class="reviewer-name-top">
-                                Dr. Laura Cloudsmith
-                            </div>
-                            <div class="reviewer-name-bot">
-                                Cloud Research Institute
-                            </div>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-pen-to-square fa-2xl" href="#" onclick="toggle()"></i>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-trash-can fa-2xl" href="#"></i>
-                        </div>
-                    </div>
-
-                    <div class="reviewer-data-box">
-                        <div>
-                            <img src="images/Vector.png"> <!-- placeholder icon -->
-                        </div>
-                        <div class="reviewer-name">
-                            <div class="reviewer-name-top">
-                                Dr. Laura Cloudsmith
-                            </div>
-                            <div class="reviewer-name-bot">
-                                Cloud Research Institute
-                            </div>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-pen-to-square fa-2xl" href="#" onclick="toggle()"></i>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-trash-can fa-2xl" href="#"></i>
-                        </div>
-                    </div>
-                </div>
-
+                {% endfor %}
+                {% endwith %}
             </div>
             
             <!-- BAWAH button back-->
