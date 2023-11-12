@@ -1,0 +1,231 @@
+/*REVIEWER LIST*/
+.reviewer-list-page{
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.reviewer-list-page#blur.active{
+    filter: blur(10px);
+    pointer-events: none;
+    user-select: none;
+}
+
+.reviewer-list-box{
+    width: 1200px;
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-left: 30px;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*bagian atas*/
+
+.reviewer-list-top{
+    margin-top: 0px;
+}
+
+.reviwer-list-title{
+    font-family: Helvetica;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.top-grid-1{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.top-grid-1-1{
+    /*yg kanan*/
+    justify-items: start;
+}
+
+.top-grid-1-2{
+    /*yg kiri*/
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 12px;
+}
+
+.top-grid-1-2 i{
+    margin-left: 0px;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.top-grid-1-2 i:hover{
+    margin-left: 0px;
+    cursor: pointer;
+}
+
+/*bagian tengah*/
+
+.reviewer-list-mid{
+    display: grid;
+    align-items: center;
+}
+
+.list-grid-1{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.reviewer-data-box{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    grid-template-columns: 10% 60% 15% 15%;
+    border: solid black;
+    border-width: 2px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.10);
+    width: 350px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.reviewer-data-box img{
+    /*gajadi dipake*/
+    margin-left: 0px;
+    cursor: pointer;
+}
+
+.reviewer-data-box img:hover{
+    /*gajadi dipake*/
+    margin-left: 0px;
+    cursor: pointer;
+}
+
+.reviewer-data-box i{
+    margin-left: 0px;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.reviewer-data-box i:hover{
+    margin-left: 0px;
+    cursor: pointer;
+}
+
+
+.reviewer-name{
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-left: 5px;
+}
+
+.reviewer-name-top{
+    font-family: Helvetica;
+    font-size: 10;
+    font-weight: 600;
+}
+
+.reviewer-name-bot{
+    font-family: Helvetica;
+    font-size: 12;
+    font-weight: 400;
+}
+
+/*bagian bawah*/
+
+.back-button{
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.save-button{
+    margin-left: auto; 
+    margin-right: 0;
+}
+
+.third-btn{
+    height: 30px;
+    justify-content: center;
+    float: left;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-right: 0px;
+    margin-top: 23px;
+    outline: none;
+    border: 2px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    background: white;
+    font-size: 16px;
+}
+
+/*POPUP*/
+
+#popup{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 525px;
+    padding: 20px;
+    background: #fff;
+    border: 2px solid black;
+    border-radius: 16px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+
+}
+
+#popup.active{
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.popup-top{
+    display: flex;
+    justify-content: center;
+}
+
+/*bagian tengah*/
+.popup-mid{
+    margin: 30px;
+}
+.input-form{
+    display: grid;
+    grid-template-columns: 30% 5% 65%;
+    font-family: Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    margin-left: 6%;
+    margin-right: 6%;
+    
+}
+
+.input-form label{
+    font-family: Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 5px;
+}
+
+.input-form input{
+    margin: 5px;
+}
+
+/*popup bawah*/
+.popup-bot{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-content: space-between;
+    margin-top: 50px;
+}
