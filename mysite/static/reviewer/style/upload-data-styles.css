@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f2f2f2;
+    text-align: center;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    display: flex;
+}
+
+.container {
+    background-color: #fff;
+    width: 1000px;
+    height: 450px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    color: #333;
+    text-align: left;
+    margin: 10px;
+    padding-left: 20px;
+    padding-top: 10px;
+    font-size: 24px;
+}
+
+.nested-container {
+    background-color: #D4D4D4;
+    padding-left: 20px;
+    padding-right: 70px;
+    margin-top: 35px;
+    margin-left: 50px;
+    width: 800px;
+    height: 300px;
+    border-radius: 5px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    flex-direction: column;
+    grid-template-columns: 1fr auto auto;
+}
+
+.gambar-ojs{
+    max-width: 70px;
+    max-height: 150px;
+    height: auto;
+}
+
+
+button {
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16;
+    font-weight: lighter;
+    border: none;
+    padding: 10px 30px;
+    margin-top: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid #000;
+}
+
+button#back-button {
+    color: #000;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    font-size: 16;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 700px; 
+    margin-left: 0;/* Tambahkan margin kanan untuk memberi jarak antara tombol "Back" dan "Save" */
+    border: 1px solid #000;
+}
+
+button[type="submit"] {
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    font-size: 16;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid #000;
+}
+
+button:hover {
+    background-color: #D4D4D4;
+}
+
+.image-description {
+    font-family: "Garamond", serif;
+    font-size: 24px;
+    color: #000000;
+    margin: 30px 0px ;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
