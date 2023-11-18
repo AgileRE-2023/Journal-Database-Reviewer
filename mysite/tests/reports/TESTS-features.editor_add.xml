@@ -1,0 +1,26 @@
+<testsuite name="features.editor_add.Add Account" tests="2" errors="0" failures="0" skipped="0" time="4.796019" timestamp="2023-11-18T14:58:04.393519" hostname="LAPTOP-AUQQESOB"><testcase classname="features.editor_add.Add Account" name="Add New Account" status="passed" time="2.40788"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Add New Account
+    Given i am on Add Account Page ... passed in 1.763s
+    When i fill in Add Account Form with name, email, and password ... passed in 0.350s
+    And i press Save button ... passed in 0.283s
+    Then the response should contain Add Account Success ... passed in 0.013s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.editor_add.Add Account" name="Database issues" status="passed" time="2.388139"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Database issues
+    Given i am on Add Account Page ... passed in 1.696s
+    When i fill in Add Account Form with name, email, and password ... passed in 0.329s
+    And i press Save button ... passed in 0.280s
+    Then the response should not contain Add Account Success ... passed in 0.028s
+    And i should be on Add Account Page ... passed in 0.056s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>
