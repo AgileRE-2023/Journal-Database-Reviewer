@@ -27,8 +27,6 @@ SECRET_KEY = "django-insecure-z9z-5mm24h(zf-n@75he-hqip_7m#*dhr_5&3vy^%&762&rgv8
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,9 +40,12 @@ INSTALLED_APPS = [
     "apps.master",
     "apps.scrapping",
     "apps.editor",
+    "tests",
     "tailwind",
     "theme",
-    "django_browser_reload"
+    "django_browser_reload",
+    "behave_django"
+    
 ]
 
 AUTH_USER_MODEL = "master.Editor"
@@ -88,13 +89,23 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "journal-reviewer",
+        "NAME": "journal_reviewer",
         "USER": "root",
         "PASSWORD": "",
         "HOST": "localhost",
         "PORT": "3306",
     }
 }
+
+BEHAVE = {
+    'DEFAULT_TAGS': '@django',
+    'SHOW_SNIPPET': True,
+    'SHOW_SKIPPED': True,
+    'SHOW_TIMING': True,
+    'ENABLE_ASSERTIONS': True,
+    'STEPS_DIR' : 'tests/acceptance/steps'
+}
+
 
 
 # Password validation

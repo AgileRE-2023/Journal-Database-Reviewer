@@ -1,0 +1,26 @@
+<testsuite name="features.login.Editor Login" tests="2" errors="0" failures="0" skipped="0" time="5.063514" timestamp="2023-11-18T13:18:39.902839" hostname="LAPTOP-AUQQESOB"><testcase classname="features.login.Editor Login" name="Success login" status="passed" time="2.60664"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Success login
+    Given i am on Login Page ... passed in 1.535s
+    When i fill in Login Form with correct email and password ... passed in 0.760s
+    And i press Login button ... passed in 0.260s
+    Then i should be on Dashboard ... passed in 0.052s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="features.login.Editor Login" name="Incorrect Email or Password" status="passed" time="2.456874"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Incorrect Email or Password
+    Given i am on Login Page ... passed in 1.325s
+    When i fill in Login Form with incorrect email and password ... passed in 0.882s
+    And i press Login button ... passed in 0.237s
+    Then the response should not contain Login Success ... passed in 0.005s
+    And i should be on Login Page ... passed in 0.008s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>
