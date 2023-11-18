@@ -51,9 +51,9 @@ class Reviewer(models.Model):
     reviewer_id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=254)
-    scopus_id = models.CharField(max_length=255)
-    scholar_id = models.CharField(max_length=255)
-    other = models.JSONField()
+    scopus_id = models.CharField(max_length=255, blank=True, null=True)
+    scholar_id = models.CharField(max_length=255, blank=True, null=True)
+    other = models.JSONField(blank=True, null=True)
 
     class Meta:
         verbose_name = "Reviewer"
