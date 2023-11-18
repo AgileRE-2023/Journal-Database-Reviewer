@@ -1,0 +1,276 @@
+{% load static %} {% load tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Editor Dashboard - Airlangga Journal Database Reviewer</title>
+    {% tailwind_preload_css %} {% tailwind_css %}
+  </head>
+  <body>
+    <!-- Header -->
+    <header
+      class="text-6xl container mx-auto text-center mt-28 mb-16 font-serif"
+    >
+      Editor Dashboard
+    </header>
+
+    <!-- Content -->
+    <section class="container flex justify-evenly mx-auto">
+      <!-- OJS Data -->
+      <div
+        class="w-[390px] shadow-lg border-[1px] rounded-3xl text-center py-10"
+      >
+        <header class="text-5xl">OJS Data</header>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="mx-auto w-96"
+        >
+          <rect
+            width="18"
+            height="18"
+            x="3"
+            y="3"
+            rx="2"
+            ry="2"
+          />
+          <line
+            x1="3"
+            x2="21"
+            y1="9"
+            y2="9"
+          />
+          <line
+            x1="3"
+            x2="21"
+            y1="15"
+            y2="15"
+          />
+          <line
+            x1="9"
+            x2="9"
+            y1="9"
+            y2="21"
+          />
+          <line
+            x1="15"
+            x2="15"
+            y1="9"
+            y2="21"
+          />
+        </svg>
+        <div class="w-72 mx-auto mb-5 -mt-5">
+          <p class="text-left">Last Synced: 07/10/23</p>
+        </div>
+        <div class="flex justify-between w-72 mx-auto">
+          <div class="w-32 border-2 py-1 rounded-lg border-black">
+            View Data
+          </div>
+          <a href="{% url "upload data OJS" %}">
+            <div class="w-32 border-2 py-1 rounded-lg border-black">
+              Update Now
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Reviewers -->
+      <div
+        class="w-[390px] shadow-lg border-[1px] rounded-3xl text-center py-10"
+      >
+        <!-- Card title -->
+        <header class="text-5xl mb-8">Reviewers</header>
+        <!-- Content -->
+        <div class="flex flex-col items-center gap-4 mb-11">
+          <!-- Reviewer Cards -->
+          <div
+            class="flex px-4 py-6 border-2 border-slate-500 shadow-lg rounded-lg justify-center w-fit gap-2"
+          >
+            <!-- Reviewer profile -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-12"
+            >
+              <path d="M18 21a6 6 0 0 0-12 0" />
+              <circle
+                cx="12"
+                cy="11"
+                r="4"
+              />
+              <rect
+                width="18"
+                height="18"
+                x="3"
+                y="3"
+                rx="2"
+              />
+            </svg>
+            <div class="text-left">
+              <p class="font-bold">Dr. Sandra Algorithmson</p>
+              <p>Data Science Institute</p>
+            </div>
+          </div>
+          <!-- Reviewer Cards -->
+          <div
+            class="flex px-4 py-6 border-2 border-slate-500 shadow-lg rounded-lg justify-center w-fit gap-2"
+          >
+            <!-- Reviewer profile -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-12"
+            >
+              <path d="M18 21a6 6 0 0 0-12 0" />
+              <circle
+                cx="12"
+                cy="11"
+                r="4"
+              />
+              <rect
+                width="18"
+                height="18"
+                x="3"
+                y="3"
+                rx="2"
+              />
+            </svg>
+            <div class="text-left">
+              <p class="font-bold">Dr. Sandra Algorithmson</p>
+              <p>Data Science Institute</p>
+            </div>
+          </div>
+          <!-- Reviewer Cards -->
+          <div
+            class="flex px-4 py-6 border-2 border-slate-500 shadow-lg rounded-lg justify-center w-fit gap-2"
+          >
+            <!-- Reviewer profile -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="w-12"
+            >
+              <path d="M18 21a6 6 0 0 0-12 0" />
+              <circle
+                cx="12"
+                cy="11"
+                r="4"
+              />
+              <rect
+                width="18"
+                height="18"
+                x="3"
+                y="3"
+                rx="2"
+              />
+            </svg>
+            <div class="text-left">
+              <p class="font-bold">Dr. Sandra Algorithmson</p>
+              <p>Data Science Institute</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-between w-72 mx-auto">
+          <a href="{% url "reviewer:reviewer_list" %}">
+            <div class="w-32 border-2 py-1 rounded-lg border-black">
+              Manage Data
+            </div>
+          </a>
+          <div class="w-32 border-2 py-1 rounded-lg border-black">
+            Recommend
+          </div>
+        </div>
+      </div>
+
+      <!-- Scraping n Crawling -->
+      <div class="flex flex-col justify-between">
+        <!-- Reviewer Scraping -->
+        <div
+          class="w-[390px] shadow-lg border-[1px] rounded-3xl text-center p-8"
+        >
+          <header class="text-4xl mb-8">Reviewer Scraping</header>
+          <div class="flex justify-between items-center px-8">
+            <p>Last scraped: 07/10/23</p>
+            <div class="border-2 px-4 py-0.5 rounded-lg border-black">Go</div>
+          </div>
+        </div>
+        <!-- Journal Scraping -->
+        <div
+          class="w-[390px] shadow-lg border-[1px] rounded-3xl text-center p-8"
+        >
+          <header class="text-4xl mb-8">Journal Scraping</header>
+          <div class="flex justify-between items-center px-8">
+            <p>Last scraped: 07/10/23</p>
+            <div class="border-2 px-4 py-0.5 rounded-lg border-black">Go</div>
+          </div>
+        </div>
+        <!-- Web Crawling -->
+        <div
+          class="w-[390px] shadow-lg border-[1px] rounded-3xl text-center p-8"
+        >
+          <header class="text-4xl mb-8">Web Crawling</header>
+          <div class="flex justify-between items-center px-8">
+            <p>Last crawled: 07/10/23</p>
+            <div class="border-2 px-4 py-0.5 rounded-lg border-black">Go</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Logout Button -->
+    <form id="logout-form" action="{% url "logout" %}" method="post">
+      {% csrf_token %}
+      <div class="absolute top-12 right-12" onclick="logout()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-log-out w-14"
+        >
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+          <polyline points="16 17 21 12 16 7" />
+          <line
+            x1="21"
+            x2="9"
+            y1="12"
+            y2="12"
+          />
+        </svg>
+      </div>
+    </form>
+  </body>
+<script>
+  function logout(){
+    const logoutForm = document.getElementById("logout-form")
+    logoutForm.submit()
+  }
+</script>
+</html>

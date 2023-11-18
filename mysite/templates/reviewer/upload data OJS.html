@@ -45,7 +45,9 @@
                 <span id="file-name" style="display: none; margin-top: 30px;"></span>
                 <p id="text-gone" class="image-description">Upload OJS Data Here</p>
             </div>
-            <button type="button" id="back-button">Back</button>
+            <a href="{% url "dashboard" %}">
+                <button type="button" id="back-button">Back</button>
+            </a>
             <input type="submit" style="padding: 5px 12px 5px 12px;" value="Save and Continue"></input>
         </form>
     </div>

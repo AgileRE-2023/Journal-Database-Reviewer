@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     "apps.reviewer",
     "apps.master",
     "apps.scrapping",
+    "apps.editor",
+    "tailwind",
+    "theme",
+    "django_browser_reload"
 ]
 
 AUTH_USER_MODEL = "master.Editor"
@@ -53,6 +57,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
+
 ]
 
 ROOT_URLCONF = "mysite.urls"
@@ -109,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+LOGOUT_REDIRECT_URL = "signin"
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -143,3 +149,11 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+TAILWIND_APP_NAME = 'theme'
+
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
