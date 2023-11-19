@@ -1,152 +1,422 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airlangga Journal Database Reviewer</title>
-    <link rel="stylesheet" href="{% static 'reviewer/style/reviewer-list-style.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
-    <div class="reviewer-list-page" id="blur">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Reviewer</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-        <div class="reviewer-list-box">
+            body {
+                height: 100vh;
+                font-family: "Poppins", sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 40px;
+                background-color: #eee;
+                position: relative;
+            }
 
-            <!-- BAGIAN ATAS (reviewers sama button add)-->
-            <div class="reviewer-list-top">
-                <div class="top-grid-1">
+            .data {
+                width: 100%;
+                height: 100%;
+                padding: 20px;
+                background-color: white;
+                box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+                border-radius: 12px;
+                position: relative;
+            }
 
-                    <div class="top-grid-1-1">
-                        <div class="reviwer-list-title">
-                            Reviewers
-                        </div>
-                    </div>
+            .data .action {
+                display: flex;
+                justify-content: space-between;
+            }
 
-                    <div class="top-grid-1-2">
-                        <i class="fa-regular fa-square-plus fa-2xl"></i>
-                    </div>
+            .data .action i {
+                opacity: 1;
+                color: black;
+                font-size: 30px;
+                cursor: pointer;
+                transition: 300ms;
+            }
 
-                </div>
-                
+            .data .action i:hover {
+                color: #198754;
+            }
+
+            .data .action h1 {
+                margin: 0;
+            }
+
+            .overlay {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                backdrop-filter: blur(3px);
+            }
+
+            .overlay .box {
+                border: 2px solid black;
+                border-radius: 12px;
+                background-color: white;
+                padding: 50px;
+                box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+            }
+
+            .overlay .box h1 {
+                font-size: 20px;
+                text-align-last: center;
+                margin-bottom: 20px;
+            }
+
+            .overlay .box form .input-data {
+                display: flex;
+                gap: 20px;
+            }
+
+            .overlay .box form .item {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .overlay .box form .item input {
+                width: 100%;
+                padding: 0 5px;
+                font-family: "Poppins", sans-serif;
+            }
+
+            .overlay .box form .item .item-input {
+                width: 250px;
+                justify-content: space-between;
+                display: flex;
+                gap: 10px;
+                margin-bottom: 5px;
+            }
+
+            .overlay .box form .kiri {
+                gap: 5px;
+            }
+
+            .overlay .box form .action {
+                margin-top: 20px;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .overlay .box form .action button {
+                padding: 5px 20px;
+                background-color: white;
+                border: 2px solid black;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: 300ms;
+            }
+
+            .overlay .box form .action button:hover {
+                background-color: rgb(204, 204, 204);
+            }
+
+            .data .scroll {
+                margin-top: 10px;
+                max-height: 80%;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+                overflow-y: scroll;
+            }
+
+            .data .scroll::-webkit-scrollbar {
+                width: 0.0001px;
+            }
+
+            .data .scroll::-webkit-scrollbar-track {
+                display: none;
+                box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            }
+
+            .data .scroll::-webkit-scrollbar-thumb {
+                background-color: darkgrey;
+                outline: 1px solid slategrey;
+            }
+
+            .data .scroll .item {
+                border-radius: 10px;
+                height: fit-content;
+                width: calc(97% / 3);
+                padding: 5px 0;
+                border: 2px solid black;
+                display: flex;
+                box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+            }
+
+            .data .scroll .item .kiri {
+                flex: 1;
+                display: grid;
+                place-items: center;
+            }
+
+            .data .scroll .item .kiri i {
+                font-size: 35px;
+            }
+
+            .data .scroll .item .tengah {
+                flex: 4;
+                display: flex;
+                flex-direction: column;
+                padding: 0 10px;
+                justify-content: center;
+            }
+
+            .data .scroll .item .tengah p:first-child {
+                font-weight: bold;
+                margin-bottom: -5px;
+            }
+
+            .data .scroll .item .kanan {
+                flex: 2;
+                width: fit-content;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .data .scroll .item .kanan i {
+                font-size: 30px;
+                text-decoration: none;
+                color: black;
+                cursor: pointer;
+                transition: 300ms;
+            }
+
+            .data .scroll .item .kanan i:first-child:hover {
+                color: #ffc107;
+            }
+            .data .scroll .item .kanan i:last-child:hover {
+                color: #dc3545;
+            }
+
+            .data .btn-back {
+                text-decoration: none;
+                color: black;
+                border: 2px solid black;
+                padding: 2px 20px;
+                border-radius: 12px;
+                position: absolute;
+                bottom: 15px;
+                transition: 300ms;
+            }
+            .data .btn-back:hover {
+                background-color: rgb(204, 204, 204);
+            }
+
+            .overlay-konfirmasi-hapus {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                backdrop-filter: blur(3px);
+            }
+
+            .overlay-konfirmasi-hapus .box {
+                border: 2px solid black;
+                border-radius: 12px;
+                background-color: white;
+                padding: 50px;
+                box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+            }
+
+            .overlay-konfirmasi-hapus .box .action {
+                margin-top: 15px;
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .overlay-konfirmasi-hapus .box .action button {
+                padding: 5px 20px;
+                background-color: white;
+                border: 2px solid black;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: 300ms;
+            }
+
+            .overlay-konfirmasi-hapus .box .action button:hover {
+                background-color: rgb(204, 204, 204);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="data">
+            <div class="action">
+                <h1>Reviewers</h1>
+                <i class="btn-tambah bi bi-plus-square"></i>
             </div>
-            
-            <!-- TENGAH REVIEWERS LIST (3 kolom)-->
-            <div class="reviewer-list-mid">
-                {% with ''|center:4 as y %}
-                {% for j in y %}        
-                <div class="list-grid-1">
-                    {% with ''|center:3 as x %}
-                    {% for i in x %}
-                    <div class="reviewer-data-box"> <!-- start -->
-                        <div>
-                            {% comment %} <img src="images/Vector.png"> <!-- placeholder icon --> {% endcomment %}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
-                                <path d="M36 42C36 38.8174 34.7357 35.7652 32.4853 33.5147C30.2348 31.2643 27.1826 30 24 30C20.8174 30 17.7652 31.2643 15.5147 33.5147C13.2643 35.7652 12 38.8174 12 42" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M24 30C28.4183 30 32 26.4183 32 22C32 17.5817 28.4183 14 24 14C19.5817 14 16 17.5817 16 22C16 26.4183 19.5817 30 24 30Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M38 6H10C7.79086 6 6 7.79086 6 10V38C6 40.2091 7.79086 42 10 42H38C40.2091 42 42 40.2091 42 38V10C42 7.79086 40.2091 6 38 6Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                              </svg>
-                        </div>
-                        <div class="reviewer-name">
-                            <div class="reviewer-name-top">
-                                Dr. Laura Cloudsmith
-                            </div>
-                            <div class="reviewer-name-bot">
-                                Cloud Research Institute
-                            </div>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-pen-to-square fa-2xl" href="#" onclick="toggle()"></i>
-                        </div>
-                        <div>
-                            <i class="fa-regular fa-trash-can fa-2xl" href="#"></i>
-                        </div>
-                    </div>  <!-- End  -->
-                    {% endfor %}
-                    {% endwith %}
+
+            <!-- data reviewer -->
+            <div class="scroll">
+                {% for reviewer in reviewers %}
+                <div class="item">
+                    <div class="kiri">
+                        <i class="bi bi-person-square"></i>
+                    </div>
+                    <div class="tengah">
+                        <p>{{ reviewer.fullname }}</p>
+                        <p>{{ reviewer.institution }}</p>
+                    </div>
+                    <div class="kanan">
+                        <i
+                            class="bi bi-pencil-square"
+                            onclick="setData('{{ reviewer.id }}', '{{ reviewer.fullname}}','{{ reviewer.email }}','{{ reviewer.institution }}','{{ reviewer.scopus_id }}','{{ reviewer.scholar_id }}')"
+                        ></i>
+                        <i class="btn-delete bi bi-trash" onclick="konfirmasiHapus('{{ reviewer.id }}')"></i>
+                    </div>
                 </div>
                 {% endfor %}
-                {% endwith %}
             </div>
-            
-            <!-- BAWAH button back-->
-            <div class="reviewer-list-bot">
-                <div class="back-button">
-                    <button type="button" class="third-btn">
-                        <a href="{% url "dashboard" %}" style="color:black; text-decoration: none;">Back</a>
-                </div>
-            </div>
+            <!-- akhir data reviewer -->
+
+            <a class="btn-back" href="">Back</a>
         </div>
-    </div>
-    <div id="popup">
-        <!-- atas -->
-        <div class="popup-top">
-            <div class="popup-close">
-                <!-- placeholder icon -->
-            </div>
-            <img src="images/usericon.png" href="#" onclick="toggle()"> <!-- placeholder icon -->
-        </div>
-        <!-- form tengah -->
-        <div class="popup-mid">
-            <div class="form">
-                <form>
-                    <div class="input-form">
-                        <label for="fname">Full name</label>
-                        :
-                        <input type="text" id="fname" name="fname">
 
-                        <label for="email">Email</label>
-                        :
-                        <input type="email" id="email" name="email">
-
-                        <label for="institution">Institution</label>
-                        :
-                        <input type="text" id="institution" name="institution">
-
-                        <label for="scopusid">Scopus ID</label>
-                        :
-                        <input type="text" id="scopusid" name="scopusid">
-
-                        <label for="scholarid">Scholar ID</label>
-                        :
-                        <input type="text" id="scholarid" name="scholarid">
-
+        <!-- overlay save data -->
+        <div class="overlay" style="display: none">
+            <div class="box">
+                <h1 class="overlay-desk"></h1>
+                <form action="/add" method="POST" class="form-data">
+                    {% csrf_token %}
+                    <div class="input-data">
+                        <div class="kiri item">
+                            <label for="fullname" class="form-label">Full name</label>
+                            <label for="email" class="form-label">Email</label>
+                            <label for="institution" class="form-label">Institution</label>
+                            <label for="scopus_id" class="form-label">Scopus ID</label>
+                            <label for="scholar_id" class="form-label">Scholar ID</label>
+                        </div>
+                        <div class="kanan item">
+                            <div class="item-input">
+                                <span>:</span>
+                                <input type="text" class="form-control fullname" name="fullname" />
+                            </div>
+                            <div class="item-input">
+                                <span>:</span>
+                                <input type="email" class="form-control email" name="email" />
+                            </div>
+                            <div class="item-input">
+                                <span>:</span>
+                                <input type="text" class="form-control institution" name="institution" />
+                            </div>
+                            <div class="item-input">
+                                <span>:</span>
+                                <input type="text" class="form-control scopus_id" name="scopus_id" />
+                            </div>
+                            <div class="item-input">
+                                <span>:</span>
+                                <input type="text" class="form-control scholar_id" name="scholar_id" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action">
+                        <button type="button" class="btn-cancel" onclick="close()">Cancel</button>
+                        <button type="submit" class="btn-simpan">Add</button>
                     </div>
                 </form>
             </div>
-
         </div>
-        <!-- bawah -->
-        <div class="popup-bot">
-            <div class="back-button">
-                <button type="button" class="third-btn">
-                    <a href="#" onclick="toggle()" style="color:black; text-decoration: none;">Cancel</a>
-            </div>
-            <div class="save-button">
-                <button type="button" class="third-btn">
-                    <a href="#" onclick="toggle()" style="color:black; text-decoration: none;">Save</a>
+        <!-- akhir overlay save data -->
+
+        <!-- overlay konfirmasi hapus -->
+        <div class="overlay-konfirmasi-hapus" style="display: none">
+            <div class="box">
+                <h2>Are you sure to delete this data?</h2>
+                <div class="action">
+                    <button type="button" class="btn-cancel-konfirmasi-hapus">Cancel</button>
+                    <button type="button" class="btn-sure-konfirmasi-hapus">Yes, Sure</button>
+                </div>
             </div>
         </div>
+        <!-- akhir overlay konfirmasi hapus -->
 
-    </div>
+        <script>
+            let idHapus = 0;
 
-    <script type="text/javascript">
-        function toggle(){
-            var blur = document.getElementById('blur');
-            blur.classList.toggle('active');
-            var popup = document.getElementById('popup');
-            popup.classList.toggle('active');
-        }
-    </script>
+            let overlay = document.querySelector(".overlay");
+            let overlayKonfirmasiHapus = document.querySelector(".overlay-konfirmasi-hapus");
 
-    
+            let btnClose = document.querySelector(".btn-cancel");
+            let btnCloseKonfirmasiHapus = document.querySelector(".btn-cancel-konfirmasi-hapus");
+            let btnSureKonfirmasiHapus = document.querySelector(".btn-sure-konfirmasi-hapus");
+            let btnAdd = document.querySelector(".btn-tambah");
+            let btnSimpan = document.querySelector(".btn-simpan");
+            let btnDelete = document.querySelector("i.btn-delete");
 
-</body>
+            let form = document.querySelector(".form-data");
+            let overlayDesk = document.querySelector("h1.overlay-desk");
+
+            let inputFullName = document.querySelector("input.fullname");
+            let inputEmail = document.querySelector("input.email");
+            let inputInstitution = document.querySelector("input.institution");
+            let inputScopusId = document.querySelector("input.scopus_id");
+            let inputScholarId = document.querySelector("input.scholar_id");
+
+            btnClose.addEventListener("click", () => {
+                overlay.style.display = "none";
+            });
+
+            btnCloseKonfirmasiHapus.addEventListener("click", () => {
+                overlayKonfirmasiHapus.style.display = "none";
+            });
+
+            btnSureKonfirmasiHapus.addEventListener("click", () => {
+                window.location.href = "/delete/" + idHapus;
+            });
+
+            btnAdd.addEventListener("click", () => {
+                overlayDesk.innerHTML = "Add Data";
+                form.action = "/add";
+                btnSimpan.innerHTML = "Add";
+                inputFullName.value = "";
+                inputEmail.value = "";
+                inputInstitution.value = "";
+                inputScopusId.value = "";
+                inputScholarId.value = "";
+                overlay.style.display = "flex";
+            });
+
+            function setData(id, fullname, email, institution, scopus_id, scholar_id) {
+                overlayDesk.innerHTML = "Edit Data";
+                form.action = "/edit/" + id;
+                btnSimpan.innerHTML = "Save";
+                inputFullName.value = fullname;
+                inputEmail.value = email;
+                inputInstitution.value = institution;
+                inputScopusId.value = scopus_id;
+                inputScholarId.value = scholar_id;
+                overlay.style.display = "flex";
+            }
+
+            function konfirmasiHapus(id) {
+                idHapus = id;
+                overlayKonfirmasiHapus.style.display = "flex";
+            }
+        </script>
+    </body>
 </html>
