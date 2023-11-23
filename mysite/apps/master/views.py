@@ -30,7 +30,7 @@ def inputDataOJSFile(request):
         
         if not set(selected_columns).issubset(df.columns):
             messages.info(request, "Kolom pada file excel tidak sesuai")
-            return redirect("input_data_ojs_file")
+            return redirect("upload data OJS")
         
         df["name"] = df["givenname.Element:Text"] + " " + df["familyname.Element:Text"]
         df["other"] = df["review_interests"]

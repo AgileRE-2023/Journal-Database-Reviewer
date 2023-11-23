@@ -33,7 +33,6 @@ def step_impl(context):
 def step_impl(context):
     
     context.browser.get('http://localhost:8000/upload-ojs/')
-    
     file_path = 'file/USERS JISEBI.xlsx'
     upload_file = os.path.abspath(
         os.path.join(os.path.dirname(__file__), "..", file_path)
@@ -44,6 +43,7 @@ def step_impl(context):
     
 @when("I attach the file DataOJS.pdf to Upload OJS Form")
 def step_impl(context):
+    context.browser.get('http://localhost:8000/upload-ojs/')
     file_path = 'file/DataOJS.pdf'
     upload_file = os.path.abspath(
         os.path.join(os.path.dirname(__file__), "..", file_path)
@@ -54,6 +54,7 @@ def step_impl(context):
 
 @when("I attach the file DataOJS.xlsx to Upload OJS Form in wrong format")
 def step_impl(context):
+    context.browser.get('http://localhost:8000/upload-ojs/')
     file_path = 'file/DataOJS.xlsx'
     upload_file = os.path.abspath(
         os.path.join(os.path.dirname(__file__), "..", file_path)
@@ -61,6 +62,8 @@ def step_impl(context):
     
     file_input = context.browser.find_element(By.ID, "myFile")
     file_input.send_keys(upload_file)
+    
+    # breakpoint()
     
     
 @when("I press Save and Continue")
@@ -72,14 +75,19 @@ def step_impl(context):
     message = context.browser.find_element(By.CLASS_NAME, "success")
     assert message , f"Response should contain Upload Success, got {message}"
     
+@then("The response should contain Upload Error")
+def step_impl(context):
+    message = context.browser.find_element(By.CLASS_NAME, "error")
+    assert message , f"Response should contain Upload Error, got {message}"
+    
 @then("The response should contain Upload Failed")
 def step_impl(context):
-    message = context.browser.finc_element(By.CLASS_NAME, "error")
-    assert message, f"Response should contain Upload Success, got {message}"
+    message = context.browser.find_element(By.CLASS_NAME, "info")
+    assert message, f"Response should contain Upload Failed, got {message}"
     
 @then("I should be on Upload Data OJS Page")
 def step_impl(context):
-    assert context.browser.url == "http://127.0.0.1:8000/upload-ojs/", f"Expected Upload OJS Page, but got {context.browser.current_url}"
+    assert context.browser.current_url == 'http://localhost:8000/upload-ojs/', f"Expected Upload Data OJS Page, but got {context.browser.current_url}"
 
 
     
