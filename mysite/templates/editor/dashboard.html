@@ -12,6 +12,31 @@
   </head>
   <body>
     <!-- Header -->
+    {% if messages %}
+    <div class="messages" style="position: absolute; top: 0; left: 0; margin: 36px 0px 0px 36px;">
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+            <div class="success" style="border: 1px solid black; border-radius: 16px; background-color: rgb(232, 255, 234,1); padding: 5px 20px 10px 20px;">
+                <button class="close-button" style="position: absolute; top: 0px; right: 0px; background-color: transparent; border: none; cursor: pointer; margin: 0; padding-right: 15px;" onclick="closeMessage(this)">X</button>
+                <h3 style="text-align: left;">Upload Success</h3>
+                <p>{{ message }}</p>
+            </div>
+            {% elif message.tags == 'info' %}
+            <div class="info" style="border: 1px solid black; border-radius: 16px; background-color: rgb(255, 255, 232); padding: 5px 20px 10px 20px;">
+                <button class="close-button" style="position: absolute; top: 0px; right: 0px; background-color: transparent; border: none; cursor: pointer; margin: 0; padding-right: 15px;" onclick="closeMessage(this)">X</button>
+                <h3 style="text-align: left;">Upload Failed</h3>
+                <p>{{ message }}</p>
+            </div>
+            {% else %}
+            <div class="error" style="border: 1px solid black; border-radius: 16px; background-color: rgba(255, 232, 232, 1); padding: 5px 20px 10px 20px;">
+                <button class="close-button" style="position: absolute; top: 0; right: 0px; background-color: transparent; border: none; cursor: pointer; margin: 0; padding-right: 15px;" onclick="closeMessage(this)">X</button>
+                <h3 style="text-align: left;">Upload Error</h3>
+                <p>{{ message }}</p>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
     <header
       class="text-6xl container mx-auto text-center mt-28 mb-16 font-serif"
     >
@@ -276,6 +301,11 @@
   function logout(){
     const logoutForm = document.getElementById("logout-form")
     logoutForm.submit()
+  }
+
+  function closeMessage(button) {
+    var message = button.parentNode; 
+    message.style.display = "none";
   }
 </script>
 </html>
