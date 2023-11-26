@@ -216,7 +216,11 @@
           <header class="text-4xl mb-8">Reviewer Scraping</header>
           <div class="flex justify-between items-center px-8">
             <p>Last scraped: 07/10/23</p>
-            <div class="border-2 px-4 py-0.5 rounded-lg border-black">Go</div>
+            <form action="{% url "reviewer_scrapping" %}">
+              <button>
+                <div class="border-2 px-4 py-0.5 rounded-lg border-black">Go</div>
+              </button>
+            </form>
           </div>
         </div>
         <!-- Journal Scraping -->

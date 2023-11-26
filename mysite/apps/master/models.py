@@ -49,8 +49,22 @@ class Upload_Data(models.Model):
         return reverse("Upload_Data_detail", kwargs={"pk": self.pk})
 
 
+class Scrapping(models.Model):
+    scrapping_id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
+    jenis_scrapping = models.CharField(max_length=1)
+    scrapping_date = models.DateField(auto_now=False, auto_now_add=True)
+    
+    class Meta:
+        verbose_name = "Scrapping"
+        verbose_name_plural = "Scrappings"
+        
+    def get_absolute_url(self):
+        return reverse("model_detail", kwargs={"pk": self.pk})
+    
 class Reviewer(models.Model):
     reviewer_id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
+    upload_id = models.ForeignKey(Upload_Data, on_delete=models.SET_NULL, null=True)
+    scrapping_id = models.ForeignKey(Scrapping, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=254)
     scopus_id = models.CharField(max_length=255, blank=True, null=True)
@@ -66,3 +80,6 @@ class Reviewer(models.Model):
 
     def get_absolute_url(self):
         return reverse("Reviewer_detail", kwargs={"pk": self.pk})
+    
+    
+    
