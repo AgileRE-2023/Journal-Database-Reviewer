@@ -27,8 +27,6 @@ SECRET_KEY = "django-insecure-z9z-5mm24h(zf-n@75he-hqip_7m#*dhr_5&3vy^%&762&rgv8
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,9 +40,12 @@ INSTALLED_APPS = [
     "apps.master",
     "apps.scrapping",
     "apps.editor",
+    "tests",
     "tailwind",
     "theme",
-    "django_browser_reload"
+    "django_browser_reload",
+    "behave_django",
+    
 ]
 
 AUTH_USER_MODEL = "master.Editor"
@@ -96,6 +97,16 @@ DATABASES = {
     }
 }
 
+BEHAVE = {
+    'DEFAULT_TAGS': '@django',
+    'SHOW_SNIPPET': True,
+    'SHOW_SKIPPED': True,
+    'SHOW_TIMING': True,
+    'ENABLE_ASSERTIONS': True,
+    'STEPS_DIR' : 'tests/acceptance/steps'
+}
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -115,7 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+LOGOUT_REDIRECT_URL = "signin"
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -156,4 +167,4 @@ INTERNAL_IPS = [
 
 TAILWIND_APP_NAME = 'theme'
 
-NPM_BIN_PATH = r"C:\Users\rizfi\AppData\Roaming\npm\npm"
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"

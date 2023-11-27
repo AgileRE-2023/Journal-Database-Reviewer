@@ -1,11 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from apps.reviewer.models import Reviewer  
+from apps.master.models import Reviewer  
 
 # Create your views here.
 def reviewer_list(request):  
     reviewers = Reviewer.objects.all()  
-    return render(request,"reviewer_list.html",{'reviewers':reviewers})
+    return render(request,"reviewer/reviewer_list.html",{'reviewers':reviewers})
 
 def add(request):
     if request.method == 'POST':

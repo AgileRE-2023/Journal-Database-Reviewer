@@ -23,10 +23,10 @@ from apps.reviewer import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', views.reviewer_list, name="reviewer_list"),
-    path('add', views.add, name="add"),
-    path('edit/<int:id>', views.edit, name='edit'),
-    path('delete/<int:id>', views.delete, name='delete'),
+    # path('', views.reviewer_list, name="reviewer_list"),
+    # path('add', views.add, name="add"),
+    # path('edit/<int:id>', views.edit, name='edit'),
+    # path('delete/<int:id>', views.delete, name='delete'),
     path("", include('apps.master.urls')),
     path("reviewer/", include('apps.reviewer.urls')),
     path("scrapping/", include('apps.scrapping.urls')),
