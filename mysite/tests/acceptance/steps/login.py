@@ -7,12 +7,12 @@ from selenium import webdriver
 @given("I am on Login Page")
 def step_impl(context):
     context.client = Client()
-    context.browser = webdriver.Chrome()  # Use the appropriate WebDriver for your browser
+    context.browser = webdriver.Chrome()
 
 @when("I fill in Login Form with correct email and password")
 def step_impl(context):
-    context.login_data = {'email': 'editor1@email.com', 'password': 'editor123'}  # Update with your test data
-    context.browser.get('http://localhost:8000/signin/')  # Update with your Django development server URL
+    context.login_data = {'email': 'editor1@gmail.com', 'password': 'editor123'}
+    context.browser.get('http://localhost:8000/signin/') 
 
     # Example: Use Selenium to fill in form fields
     email_input = context.browser.find_element(By.ID, 'id_email')
