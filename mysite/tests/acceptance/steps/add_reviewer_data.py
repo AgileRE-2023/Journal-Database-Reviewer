@@ -20,12 +20,12 @@ def step_impl(context):
 
 @when ("And i see add reviewer form")
 def step_impl(context):
-    context.browser.get('http://127.0.0.1:8000/reviewer/add/') #sama ini jg
+    context.browser.get('http://127.0.0.1:8000/reviewer/')
 
 @when ("And i fill in Add Reviewer Form with full Name, Email, Institution, Scopus ID, dan Scholar ID")
 def step_impl(context):
     context.add_data = {'name': 'Reviewer1', 'email': 'Reviewer1@gmail.com', 'institution': 'Universitas Airlangga', 'Scopus ID': '57204106663', 'Scholar ID': 'qytTHTMAAAAJ'}
-    context.browser.get('http://127.0.0.1:8000/reviewer/add/') #sm sperti sebelumnya
+    context.browser.get('http://127.0.0.1:8000/reviewer/')
 
     name_input = context.browser.find_element(By.CLASS_NAME, 'fullname')
     email_input = context.browser.find_elemet (By.CLASS_NAME, 'email')

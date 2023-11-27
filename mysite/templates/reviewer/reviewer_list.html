@@ -1,422 +1,455 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Reviewer</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reviewer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-            body {
-                height: 100vh;
-                font-family: "Poppins", sans-serif;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 40px;
-                background-color: #eee;
-                position: relative;
-            }
+      body {
+        height: 100vh;
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        background-color: #eee;
+        position: relative;
+      }
 
-            .data {
-                width: 100%;
-                height: 100%;
-                padding: 20px;
-                background-color: white;
-                box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
-                border-radius: 12px;
-                position: relative;
-            }
+      .data {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        position: relative;
+      }
 
-            .data .action {
-                display: flex;
-                justify-content: space-between;
-            }
+      .data .action {
+        display: flex;
+        justify-content: space-between;
+      }
 
-            .data .action i {
-                opacity: 1;
-                color: black;
-                font-size: 30px;
-                cursor: pointer;
-                transition: 300ms;
-            }
+      .data .action i {
+        opacity: 1;
+        color: black;
+        font-size: 30px;
+        cursor: pointer;
+        transition: 300ms;
+      }
 
-            .data .action i:hover {
-                color: #198754;
-            }
+      .data .action i:hover {
+        color: #198754;
+      }
 
-            .data .action h1 {
-                margin: 0;
-            }
+      .data .action h1 {
+        margin: 0;
+      }
 
-            .overlay {
-                position: fixed;
-                width: 100%;
-                height: 100vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                backdrop-filter: blur(3px);
-            }
+      .overlay {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(3px);
+      }
 
-            .overlay .box {
-                border: 2px solid black;
-                border-radius: 12px;
-                background-color: white;
-                padding: 50px;
-                box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
-            }
+      .overlay .box {
+        border: 2px solid black;
+        border-radius: 12px;
+        background-color: white;
+        padding: 50px;
+        box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+      }
 
-            .overlay .box h1 {
-                font-size: 20px;
-                text-align-last: center;
-                margin-bottom: 20px;
-            }
+      .overlay .box h1 {
+        font-size: 20px;
+        text-align-last: center;
+        margin-bottom: 20px;
+      }
 
-            .overlay .box form .input-data {
-                display: flex;
-                gap: 20px;
-            }
+      .overlay .box form .input-data {
+        display: flex;
+        gap: 20px;
+      }
 
-            .overlay .box form .item {
-                display: flex;
-                flex-direction: column;
-            }
+      .overlay .box form .item {
+        display: flex;
+        flex-direction: column;
+      }
 
-            .overlay .box form .item input {
-                width: 100%;
-                padding: 0 5px;
-                font-family: "Poppins", sans-serif;
-            }
+      .overlay .box form .item input {
+        width: 100%;
+        padding: 0 5px;
+        font-family: "Poppins", sans-serif;
+      }
 
-            .overlay .box form .item .item-input {
-                width: 250px;
-                justify-content: space-between;
-                display: flex;
-                gap: 10px;
-                margin-bottom: 5px;
-            }
+      .overlay .box form .item .item-input {
+        width: 250px;
+        justify-content: space-between;
+        display: flex;
+        gap: 10px;
+        margin-bottom: 5px;
+      }
 
-            .overlay .box form .kiri {
-                gap: 5px;
-            }
+      .overlay .box form .kiri {
+        gap: 5px;
+      }
 
-            .overlay .box form .action {
-                margin-top: 20px;
-                display: flex;
-                justify-content: space-between;
-            }
+      .overlay .box form .action {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+      }
 
-            .overlay .box form .action button {
-                padding: 5px 20px;
-                background-color: white;
-                border: 2px solid black;
-                border-radius: 10px;
-                cursor: pointer;
-                transition: 300ms;
-            }
+      .overlay .box form .action button {
+        padding: 5px 20px;
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 300ms;
+      }
 
-            .overlay .box form .action button:hover {
-                background-color: rgb(204, 204, 204);
-            }
+      .overlay .box form .action button:hover {
+        background-color: rgb(204, 204, 204);
+      }
 
-            .data .scroll {
-                margin-top: 10px;
-                max-height: 80%;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 15px;
-                overflow-y: scroll;
-            }
+      .data .scroll {
+        margin-top: 10px;
+        max-height: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        overflow-y: scroll;
+      }
 
-            .data .scroll::-webkit-scrollbar {
-                width: 0.0001px;
-            }
+      .data .scroll::-webkit-scrollbar {
+        width: 0.0001px;
+      }
 
-            .data .scroll::-webkit-scrollbar-track {
-                display: none;
-                box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-            }
+      .data .scroll::-webkit-scrollbar-track {
+        display: none;
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      }
 
-            .data .scroll::-webkit-scrollbar-thumb {
-                background-color: darkgrey;
-                outline: 1px solid slategrey;
-            }
+      .data .scroll::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+      }
 
-            .data .scroll .item {
-                border-radius: 10px;
-                height: fit-content;
-                width: calc(97% / 3);
-                padding: 5px 0;
-                border: 2px solid black;
-                display: flex;
-                box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
-            }
+      .data .scroll .item {
+        border-radius: 10px;
+        height: fit-content;
+        width: calc(97% / 3);
+        padding: 5px 0;
+        border: 2px solid black;
+        display: flex;
+        box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+      }
 
-            .data .scroll .item .kiri {
-                flex: 1;
-                display: grid;
-                place-items: center;
-            }
+      .data .scroll .item .kiri {
+        flex: 1;
+        display: grid;
+        place-items: center;
+      }
 
-            .data .scroll .item .kiri i {
-                font-size: 35px;
-            }
+      .data .scroll .item .kiri i {
+        font-size: 35px;
+      }
 
-            .data .scroll .item .tengah {
-                flex: 4;
-                display: flex;
-                flex-direction: column;
-                padding: 0 10px;
-                justify-content: center;
-            }
+      .data .scroll .item .tengah {
+        flex: 4;
+        display: flex;
+        flex-direction: column;
+        padding: 0 10px;
+        justify-content: center;
+      }
 
-            .data .scroll .item .tengah p:first-child {
-                font-weight: bold;
-                margin-bottom: -5px;
-            }
+      .data .scroll .item .tengah p:first-child {
+        font-weight: bold;
+        margin-bottom: -5px;
+      }
 
-            .data .scroll .item .kanan {
-                flex: 2;
-                width: fit-content;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 10px;
-            }
+      .data .scroll .item .kanan {
+        flex: 2;
+        width: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
 
-            .data .scroll .item .kanan i {
-                font-size: 30px;
-                text-decoration: none;
-                color: black;
-                cursor: pointer;
-                transition: 300ms;
-            }
+      .data .scroll .item .kanan i {
+        font-size: 30px;
+        text-decoration: none;
+        color: black;
+        cursor: pointer;
+        transition: 300ms;
+      }
 
-            .data .scroll .item .kanan i:first-child:hover {
-                color: #ffc107;
-            }
-            .data .scroll .item .kanan i:last-child:hover {
-                color: #dc3545;
-            }
+      .data .scroll .item .kanan i:first-child:hover {
+        color: #ffc107;
+      }
+      .data .scroll .item .kanan i:last-child:hover {
+        color: #dc3545;
+      }
 
-            .data .btn-back {
-                text-decoration: none;
-                color: black;
-                border: 2px solid black;
-                padding: 2px 20px;
-                border-radius: 12px;
-                position: absolute;
-                bottom: 15px;
-                transition: 300ms;
-            }
-            .data .btn-back:hover {
-                background-color: rgb(204, 204, 204);
-            }
+      .data .btn-back {
+        text-decoration: none;
+        color: black;
+        border: 2px solid black;
+        padding: 2px 20px;
+        border-radius: 12px;
+        position: absolute;
+        bottom: 15px;
+        transition: 300ms;
+      }
+      .data .btn-back:hover {
+        background-color: rgb(204, 204, 204);
+      }
 
-            .overlay-konfirmasi-hapus {
-                position: fixed;
-                width: 100%;
-                height: 100vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                backdrop-filter: blur(3px);
-            }
+      .overlay-konfirmasi-hapus {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(3px);
+      }
 
-            .overlay-konfirmasi-hapus .box {
-                border: 2px solid black;
-                border-radius: 12px;
-                background-color: white;
-                padding: 50px;
-                box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
-            }
+      .overlay-konfirmasi-hapus .box {
+        border: 2px solid black;
+        border-radius: 12px;
+        background-color: white;
+        padding: 50px;
+        box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+      }
 
-            .overlay-konfirmasi-hapus .box .action {
-                margin-top: 15px;
-                display: flex;
-                justify-content: center;
-                gap: 20px;
-            }
+      .overlay-konfirmasi-hapus .box .action {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
 
-            .overlay-konfirmasi-hapus .box .action button {
-                padding: 5px 20px;
-                background-color: white;
-                border: 2px solid black;
-                border-radius: 10px;
-                cursor: pointer;
-                transition: 300ms;
-            }
+      .overlay-konfirmasi-hapus .box .action button {
+        padding: 5px 20px;
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 300ms;
+      }
 
-            .overlay-konfirmasi-hapus .box .action button:hover {
-                background-color: rgb(204, 204, 204);
-            }
-        </style>
-    </head>
-    <body>
-        <div class="data">
-            <div class="action">
-                <h1>Reviewers</h1>
-                <i class="btn-tambah bi bi-plus-square"></i>
-            </div>
+      .overlay-konfirmasi-hapus .box .action button:hover {
+        background-color: rgb(204, 204, 204);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="data">
+      <div class="action">
+        <h1>Reviewers</h1>
+        <i class="btn-tambah bi bi-plus-square"></i>
+      </div>
 
-            <!-- data reviewer -->
-            <div class="scroll">
-                {% for reviewer in reviewers %}
-                <div class="item">
-                    <div class="kiri">
-                        <i class="bi bi-person-square"></i>
-                    </div>
-                    <div class="tengah">
-                        <p>{{ reviewer.fullname }}</p>
-                        <p>{{ reviewer.institution }}</p>
-                    </div>
-                    <div class="kanan">
-                        <i
-                            class="bi bi-pencil-square"
-                            onclick="setData('{{ reviewer.id }}', '{{ reviewer.fullname}}','{{ reviewer.email }}','{{ reviewer.institution }}','{{ reviewer.scopus_id }}','{{ reviewer.scholar_id }}')"
-                        ></i>
-                        <i class="btn-delete bi bi-trash" onclick="konfirmasiHapus('{{ reviewer.id }}')"></i>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            <!-- akhir data reviewer -->
-
-            <a class="btn-back" href="">Back</a>
+      <!-- data reviewer -->
+      <div class="scroll">
+        {% for reviewer in reviewers %}
+        <div class="item">
+          <div class="kiri">
+            <i class="bi bi-person-square"></i>
+          </div>
+          <div class="tengah">
+            <p>{{ reviewer.name }}</p>
+            <p>{{ reviewer.institution }}</p>
+          </div>
+          <div class="kanan">
+            <i
+              class="bi bi-pencil-square"
+              onclick="setData('{{ reviewer.id }}', '{{ reviewer.name}}','{{ reviewer.email }}','{{ reviewer.institution }}','{{ reviewer.scopus_id }}','{{ reviewer.scholar_id }}')"></i>
+            <i
+              class="btn-delete bi bi-trash"
+              onclick="konfirmasiHapus('{{ reviewer.id }}')"></i>
+          </div>
         </div>
+        {% endfor %}
+      </div>
+      <!-- akhir data reviewer -->
 
-        <!-- overlay save data -->
-        <div class="overlay" style="display: none">
-            <div class="box">
-                <h1 class="overlay-desk"></h1>
-                <form action="/add" method="POST" class="form-data">
-                    {% csrf_token %}
-                    <div class="input-data">
-                        <div class="kiri item">
-                            <label for="fullname" class="form-label">Full name</label>
-                            <label for="email" class="form-label">Email</label>
-                            <label for="institution" class="form-label">Institution</label>
-                            <label for="scopus_id" class="form-label">Scopus ID</label>
-                            <label for="scholar_id" class="form-label">Scholar ID</label>
-                        </div>
-                        <div class="kanan item">
-                            <div class="item-input">
-                                <span>:</span>
-                                <input type="text" class="form-control fullname" name="fullname" />
-                            </div>
-                            <div class="item-input">
-                                <span>:</span>
-                                <input type="email" class="form-control email" name="email" />
-                            </div>
-                            <div class="item-input">
-                                <span>:</span>
-                                <input type="text" class="form-control institution" name="institution" />
-                            </div>
-                            <div class="item-input">
-                                <span>:</span>
-                                <input type="text" class="form-control scopus_id" name="scopus_id" />
-                            </div>
-                            <div class="item-input">
-                                <span>:</span>
-                                <input type="text" class="form-control scholar_id" name="scholar_id" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="action">
-                        <button type="button" class="btn-cancel" onclick="close()">Cancel</button>
-                        <button type="submit" class="btn-simpan">Add</button>
-                    </div>
-                </form>
+      <a class="btn-back" href="{% url "dashboard" %}">Back</a>
+    </div>
+
+    <!-- overlay save data -->
+    <div class="overlay" style="display: none">
+      <div class="box">
+        <h1 class="overlay-desk"></h1>
+        <form action="/add" method="POST" class="form-data">
+          {% csrf_token %}
+          <div class="input-data">
+            <div class="kiri item">
+              <label for="fullname" class="form-label">Full name</label>
+              <label for="email" class="form-label">Email</label>
+              <label for="institution" class="form-label">Institution</label>
+              <label for="scopus_id" class="form-label">Scopus ID</label>
+              <label for="scholar_id" class="form-label">Scholar ID</label>
             </div>
-        </div>
-        <!-- akhir overlay save data -->
-
-        <!-- overlay konfirmasi hapus -->
-        <div class="overlay-konfirmasi-hapus" style="display: none">
-            <div class="box">
-                <h2>Are you sure to delete this data?</h2>
-                <div class="action">
-                    <button type="button" class="btn-cancel-konfirmasi-hapus">Cancel</button>
-                    <button type="button" class="btn-sure-konfirmasi-hapus">Yes, Sure</button>
-                </div>
+            <div class="kanan item">
+              <div class="item-input">
+                <span>:</span>
+                <input
+                  type="text"
+                  class="form-control fullname"
+                  name="fullname" />
+              </div>
+              <div class="item-input">
+                <span>:</span>
+                <input type="email" class="form-control email" name="email" />
+              </div>
+              <div class="item-input">
+                <span>:</span>
+                <input
+                  type="text"
+                  class="form-control institution"
+                  name="institution" />
+              </div>
+              <div class="item-input">
+                <span>:</span>
+                <input
+                  type="text"
+                  class="form-control scopus_id"
+                  name="scopus_id" />
+              </div>
+              <div class="item-input">
+                <span>:</span>
+                <input
+                  type="text"
+                  class="form-control scholar_id"
+                  name="scholar_id" />
+              </div>
             </div>
+          </div>
+          <div class="action">
+            <button type="button" class="btn-cancel" onclick="close()">
+              Cancel
+            </button>
+            <button type="submit" class="btn-simpan">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- akhir overlay save data -->
+
+    <!-- overlay konfirmasi hapus -->
+    <div class="overlay-konfirmasi-hapus" style="display: none">
+      <div class="box">
+        <h2>Are you sure to delete this data?</h2>
+        <div class="action">
+          <button type="button" class="btn-cancel-konfirmasi-hapus">
+            Cancel
+          </button>
+          <button type="button" class="btn-sure-konfirmasi-hapus">
+            Yes, Sure
+          </button>
         </div>
-        <!-- akhir overlay konfirmasi hapus -->
+      </div>
+    </div>
+    <!-- akhir overlay konfirmasi hapus -->
 
-        <script>
-            let idHapus = 0;
+    <script>
+      let idHapus = 0;
 
-            let overlay = document.querySelector(".overlay");
-            let overlayKonfirmasiHapus = document.querySelector(".overlay-konfirmasi-hapus");
+      let overlay = document.querySelector(".overlay");
+      let overlayKonfirmasiHapus = document.querySelector(
+        ".overlay-konfirmasi-hapus"
+      );
 
-            let btnClose = document.querySelector(".btn-cancel");
-            let btnCloseKonfirmasiHapus = document.querySelector(".btn-cancel-konfirmasi-hapus");
-            let btnSureKonfirmasiHapus = document.querySelector(".btn-sure-konfirmasi-hapus");
-            let btnAdd = document.querySelector(".btn-tambah");
-            let btnSimpan = document.querySelector(".btn-simpan");
-            let btnDelete = document.querySelector("i.btn-delete");
+      let btnClose = document.querySelector(".btn-cancel");
+      let btnCloseKonfirmasiHapus = document.querySelector(
+        ".btn-cancel-konfirmasi-hapus"
+      );
+      let btnSureKonfirmasiHapus = document.querySelector(
+        ".btn-sure-konfirmasi-hapus"
+      );
+      let btnAdd = document.querySelector(".btn-tambah");
+      let btnSimpan = document.querySelector(".btn-simpan");
+      let btnDelete = document.querySelector("i.btn-delete");
 
-            let form = document.querySelector(".form-data");
-            let overlayDesk = document.querySelector("h1.overlay-desk");
+      let form = document.querySelector(".form-data");
+      let overlayDesk = document.querySelector("h1.overlay-desk");
 
-            let inputFullName = document.querySelector("input.fullname");
-            let inputEmail = document.querySelector("input.email");
-            let inputInstitution = document.querySelector("input.institution");
-            let inputScopusId = document.querySelector("input.scopus_id");
-            let inputScholarId = document.querySelector("input.scholar_id");
+      let inputFullName = document.querySelector("input.fullname");
+      let inputEmail = document.querySelector("input.email");
+      let inputInstitution = document.querySelector("input.institution");
+      let inputScopusId = document.querySelector("input.scopus_id");
+      let inputScholarId = document.querySelector("input.scholar_id");
 
-            btnClose.addEventListener("click", () => {
-                overlay.style.display = "none";
-            });
+      btnClose.addEventListener("click", () => {
+        overlay.style.display = "none";
+      });
 
-            btnCloseKonfirmasiHapus.addEventListener("click", () => {
-                overlayKonfirmasiHapus.style.display = "none";
-            });
+      btnCloseKonfirmasiHapus.addEventListener("click", () => {
+        overlayKonfirmasiHapus.style.display = "none";
+      });
 
-            btnSureKonfirmasiHapus.addEventListener("click", () => {
-                window.location.href = "/delete/" + idHapus;
-            });
+      btnSureKonfirmasiHapus.addEventListener("click", () => {
+        window.location.href = "/delete/" + idHapus;
+      });
 
-            btnAdd.addEventListener("click", () => {
-                overlayDesk.innerHTML = "Add Data";
-                form.action = "/add";
-                btnSimpan.innerHTML = "Add";
-                inputFullName.value = "";
-                inputEmail.value = "";
-                inputInstitution.value = "";
-                inputScopusId.value = "";
-                inputScholarId.value = "";
-                overlay.style.display = "flex";
-            });
+      btnAdd.addEventListener("click", () => {
+        overlayDesk.innerHTML = "Add Data";
+        form.action = "reviewer/add";
+        btnSimpan.innerHTML = "Add";
+        inputFullName.value = "";
+        inputEmail.value = "";
+        inputInstitution.value = "";
+        inputScopusId.value = "";
+        inputScholarId.value = "";
+        overlay.style.display = "flex";
+      });
 
-            function setData(id, fullname, email, institution, scopus_id, scholar_id) {
-                overlayDesk.innerHTML = "Edit Data";
-                form.action = "/edit/" + id;
-                btnSimpan.innerHTML = "Save";
-                inputFullName.value = fullname;
-                inputEmail.value = email;
-                inputInstitution.value = institution;
-                inputScopusId.value = scopus_id;
-                inputScholarId.value = scholar_id;
-                overlay.style.display = "flex";
-            }
+      function setData(
+        id,
+        fullname,
+        email,
+        institution,
+        scopus_id,
+        scholar_id
+      ) {
+        overlayDesk.innerHTML = "Edit Data";
+        form.action = "edit/" + id;
+        btnSimpan.innerHTML = "Save";
+        inputFullName.value = fullname;
+        inputEmail.value = email;
+        inputInstitution.value = institution;
+        inputScopusId.value = scopus_id;
+        inputScholarId.value = scholar_id;
+        overlay.style.display = "flex";
+      }
 
-            function konfirmasiHapus(id) {
-                idHapus = id;
-                overlayKonfirmasiHapus.style.display = "flex";
-            }
-        </script>
-    </body>
+      function konfirmasiHapus(id) {
+        idHapus = id;
+        overlayKonfirmasiHapus.style.display = "flex";
+      }
+    </script>
+  </body>
 </html>
