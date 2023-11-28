@@ -286,7 +286,7 @@
           <div class="kanan">
             <i
               class="bi bi-pencil-square"
-              onclick="setData('{{ reviewer.id }}', '{{ reviewer.name}}','{{ reviewer.email }}','{{ reviewer.institution }}','{{ reviewer.scopus_id }}','{{ reviewer.scholar_id }}')"></i>
+              onclick="setData('{{ reviewer.reviewer_id }}', '{{ reviewer.name}}','{{ reviewer.email }}','{{ reviewer.scopus_id }}','{{ reviewer.scholar_id }}')"></i>
             <i
               class="btn-delete bi bi-trash"
               onclick="konfirmasiHapus('{{ reviewer.id }}')"></i>
@@ -303,13 +303,13 @@
     <div class="overlay" style="display: none">
       <div class="box">
         <h1 class="overlay-desk"></h1>
-        <form action="/add" method="POST" class="form-data">
+        <form action="{% url "reviewer:add" %}" method="POST" class="form-data">
           {% csrf_token %}
           <div class="input-data">
             <div class="kiri item">
               <label for="fullname" class="form-label">Full name</label>
               <label for="email" class="form-label">Email</label>
-              <label for="institution" class="form-label">Institution</label>
+              {% comment %} <label for="institution" class="form-label">Institution</label> {% endcomment %}
               <label for="scopus_id" class="form-label">Scopus ID</label>
               <label for="scholar_id" class="form-label">Scholar ID</label>
             </div>
@@ -319,19 +319,19 @@
                 <input
                   type="text"
                   class="form-control fullname"
-                  name="fullname" />
+                  name="name" />
               </div>
               <div class="item-input">
                 <span>:</span>
                 <input type="email" class="form-control email" name="email" />
               </div>
-              <div class="item-input">
+              {% comment %} <div class="item-input">
                 <span>:</span>
                 <input
                   type="text"
                   class="form-control institution"
                   name="institution" />
-              </div>
+              </div>  {% endcomment %}
               <div class="item-input">
                 <span>:</span>
                 <input
@@ -346,6 +346,7 @@
                   class="form-control scholar_id"
                   name="scholar_id" />
               </div>
+              <input type="text" class="reviewer_id" name="reviewer_id" style="display: none;">
             </div>
           </div>
           <div class="action">
@@ -402,6 +403,7 @@
       let inputInstitution = document.querySelector("input.institution");
       let inputScopusId = document.querySelector("input.scopus_id");
       let inputScholarId = document.querySelector("input.scholar_id");
+      let inputReviewerID = document.querySelector("input.reviewer_id")
 
       btnClose.addEventListener("click", () => {
         overlay.style.display = "none";
@@ -417,33 +419,43 @@
 
       btnAdd.addEventListener("click", () => {
         overlayDesk.innerHTML = "Add Data";
-        form.action = "reviewer/add";
+        form.action = "{% url "reviewer:add" %}";
         btnSimpan.innerHTML = "Add";
         inputFullName.value = "";
         inputEmail.value = "";
-        inputInstitution.value = "";
+        //inputInstitution.value = "";
         inputScopusId.value = "";
         inputScholarId.value = "";
         overlay.style.display = "flex";
       });
 
+      function parseUUID(uuid){
+        let originalString = uuid;
+        let modifiedString = originalString.replace(/-/g, "");
+        return modifiedString
+
+      }
+
       function setData(
         id,
         fullname,
         email,
-        institution,
+        //institution,
         scopus_id,
         scholar_id
       ) {
+        id = parseUUID(id)
         overlayDesk.innerHTML = "Edit Data";
-        form.action = "edit/" + id;
+        form.action = "{% url "reviewer:edit" %}";
         btnSimpan.innerHTML = "Save";
         inputFullName.value = fullname;
         inputEmail.value = email;
-        inputInstitution.value = institution;
+        //inputInstitution.value = institutiidon;
         inputScopusId.value = scopus_id;
         inputScholarId.value = scholar_id;
+        inputReviewerID.value = id
         overlay.style.display = "flex";
+
       }
 
       function konfirmasiHapus(id) {

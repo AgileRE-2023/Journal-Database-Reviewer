@@ -10,6 +10,6 @@ urlpatterns = [
     path("upload", view=views.upload, name='upload'),
     path("recommend", view=views.recommend, name='recommend'),
     path('add', views.add, name="add"),
-    path('edit/<int:id>', views.edit, name='edit'),
-    path('delete/<int:id>', views.delete, name='delete'),
+    path("edit", views.edit, name='edit'),
+    path("delete/<uuid:id>", views.delete, name='delete'),
 ]
