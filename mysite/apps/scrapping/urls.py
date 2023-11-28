@@ -5,5 +5,5 @@ from . import views
 
 
 urlpatterns = [
-    path("scraping-jurnal/", views.scraping_jurnal, name="scraping_jurnal"),
+    path("scrape-journals/", view=views.scraping_jurnal, name="dashboard")
 ]
