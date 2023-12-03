@@ -8,6 +8,32 @@
     <title>Upload Data OJS</title>
 </head>
 <body>
+    {% if messages %}
+        <div class="messages" style="position: absolute; top: 0; left: 0; margin: 36px 0px 0px 36px;">
+            {% for message in messages %}
+                {% if message.tags == 'success' %}
+                <div class="success" style="border: 1px solid black; border-radius: 16px; background-color: rgb(232, 255, 234,1); padding: 5px 20px 10px 20px;">
+                    <button class="close-button" style="position: absolute; top: 0px; right: 0px; background-color: transparent; border: none; cursor: pointer; margin: 0; padding-right: 15px;" onclick="closeMessage(this)">X</button>
+                    <h3 style="text-align: left;">Upload Success</h3>
+                    <p>{{ message }}</p>
+                </div>
+                {% elif message.tags == 'info' %}
+                <div class="info" style="border: 1px solid black; border-radius: 16px; background-color: rgb(255, 255, 232); padding: 5px 20px 10px 20px;">
+                    <button class="close-button" style="position: absolute; top: 0px; right: 0px; background-color: transparent; border: none; cursor: pointer; margin: 0; padding-right: 15px;" onclick="closeMessage(this)">X</button>
+                    <h3 style="text-align: left;">Upload Failed</h3>
+                    <p>{{ message }}</p>
+                </div>
+                {% else %}
+                <div class="error" style="border: 1px solid black; border-radius: 16px; background-color: rgba(255, 232, 232, 1); padding: 5px 20px 10px 20px;">
+                    <button class="close-button" style="position: absolute; top: 0; right: 0px; background-color: transparent; border: none; cursor: pointer; margin: 0; padding-right: 15px;" onclick="closeMessage(this)">X</button>
+                    <h3 style="text-align: left;">Upload Error</h3>
+                    <p>{{ message }}</p>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+    
     <div class="container">
         <h1>Upload OJS Data</h1>
         <form method="post" enctype="multipart/form-data">
@@ -16,12 +42,32 @@
                 <input type="file" id="myFile" style="display:none" name="excel_file">
                 {% load static %}
                 <img src="{% static 'reviewer/images/ojss.png' %}" onclick="document.getElementById('myFile').click();" alt="Click to select a file" width="120" height="150">
-                <p class="image-description">Upload OJS Data Here</p>
+                <span id="file-name" style="display: none; margin-top: 30px;"></span>
+                <p id="text-gone" class="image-description">Upload OJS Data Here</p>
             </div>
-            <button type="button" id="back-button">Back</button>
-            <input type="submit" value="Save and Continue"></input>
+            <a href="{% url "dashboard" %}">
+                <button type="button" id="back-button">Back</button>
+            </a>
+            <input type="submit" style="padding: 5px 12px 5px 12px;" value="Save and Continue"></input>
         </form>
     </div>
     
 </body>
+
+<script>
+    function closeMessage(button) {
+        var message = button.parentNode; 
+        message.style.display = "none";
+    }
+
+    document.getElementById('myFile').addEventListener('change', function() {
+        var fileName = this.value.split('\\').pop(); 
+        var fileSpan = document.getElementById('file-name');
+        fileSpan.textContent = 'Selected file: ' + fileName;
+        fileSpan.style.display = 'inline-block'; 
+        var textGone = document.getElementById('text-gone');
+        textGone.style.display = 'none';
+    });
+</script>
+
 </html>

@@ -10,3 +10,16 @@ class EditorManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db)
         return user
+    
+    def create_superuser(self, email, password):
+        """
+        Creates and saves a superuser with the given email and password.
+        """
+        user = self.create_user(
+            email,
+            password=password,
+            is_superuser = True,
+            is_staff = True
+        )
+        user.save(using=self._db)
+        return user

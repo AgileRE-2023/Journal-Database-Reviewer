@@ -27,8 +27,6 @@ SECRET_KEY = "django-insecure-z9z-5mm24h(zf-n@75he-hqip_7m#*dhr_5&3vy^%&762&rgv8
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,9 +39,12 @@ INSTALLED_APPS = [
     "apps.reviewer",
     "apps.master",
     "apps.scrapping",
+    "apps.editor",
+    "tests",
     "tailwind",
     "theme",
-    "django_browser_reload"
+    "django_browser_reload",
+    "behave_django",
 ]
 
 AUTH_USER_MODEL = "master.Editor"
@@ -57,7 +58,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
-
 ]
 
 ROOT_URLCONF = "mysite.urls"
@@ -87,7 +87,7 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "journal-reviewer",
+        "NAME": "journal_reviewer",
         "USER": "root",
         "PASSWORD": "",
         "HOST": "localhost",
@@ -96,6 +96,15 @@ DATABASES = {
 }
 
 CSRF_FAILURE_VIEW = "apps.master.views.csrf_failure"
+
+BEHAVE = {
+    "DEFAULT_TAGS": "@django",
+    "SHOW_SNIPPET": True,
+    "SHOW_SKIPPED": True,
+    "SHOW_TIMING": True,
+    "ENABLE_ASSERTIONS": True,
+    "STEPS_DIR": "tests/acceptance/steps",
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -115,7 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+LOGOUT_REDIRECT_URL = "signin"
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -154,6 +163,6 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-TAILWIND_APP_NAME = 'theme'
+TAILWIND_APP_NAME = "theme"
 
-NPM_BIN_PATH = r"C:\Users\willi\AppData\Roaming\npm\npm.cmd"
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
