@@ -5,6 +5,6 @@ from . import views
 
 
 urlpatterns = [
-    path("reviewer", view=views.reviewerScrapping, name="reviewer_scrapping")
-    path("journal", view=views.scraping_jurnal, name="journal_scrapping")
+    path("reviewer", view=views.index, name="reviewer_scrapping"),
+    path("journal", view=views.scraping_jurnal, name="journal_scrapping"),
 ]
