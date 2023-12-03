@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from elsapy.elsclient import ElsClient
 from elsapy.elssearch import ElsSearch
 from django.contrib import messages
-from ..master.models import Editor, Reviewer, Journal, Scraping, detail_journal
+from ..master.models import Editor, Reviewer, Journal, Scraping
 from django.utils import timezone
 import requests
 
@@ -21,8 +21,8 @@ config = json.load(file)
 
 client = ElsClient(api_key=config['apikey'])
 
-async def reviewerScrapping(requests):
-    reviewers = Reviewer.objects.filter(scopus_id__isnull=True)[:10]
+async def reviewerScrapping(request):
+    reviewers = Reviewer.objects.filter(scopus_id__isnull=True)[:4]
     
     start = time.perf_counter()
     # response = await searchAuthorData(reviewers)
@@ -36,9 +36,6 @@ async def reviewerScrapping(requests):
         tasks.append(task)
     
     responses = await asyncio.gather(
-        # searchAuthorData(reviewers[0:50]),
-        # searchAuthorData(reviewers[51:100]),
-        # searchAuthorData(reviewers[101:149]),
         *tasks
     )
     end = time.perf_counter()
@@ -52,13 +49,16 @@ async def reviewerScrapping(requests):
     
     # return redirect('dashboard')
 
+@sync_to_async
+def create_scrapping(editor_id):
+    scrapping = Scraping(editor_id=editor_id)
+    scrapping.save()
+    return True
+
 async def index(request):
     result = await reviewerScrapping(request)
-    if result == "loading":
-        return render(request, 'helper/loading.html')
-    else:
-        messages.success(request, f"Updated {result['responses']} Reviewer Scopus ID, takes {result['end'] - result['start']:0.1f} seconds")
-        return redirect('dashboard')
+    messages.success(request, f"Updated {result['responses']} Reviewer Scopus ID, takes {result['end'] - result['start']:0.1f} seconds")
+    return redirect('dashboard')
 
 async def searchAuthorData(reviewers : list[Reviewer]):
     success = 0
@@ -121,19 +121,20 @@ def scraping_jurnal(request):
                         title = data.get('abstracts-retrieval-response', {}).get('coredata', {}).get('dc:title')
                         doi = data.get('abstracts-retrieval-response', {}).get('coredata', {}).get('prism:doi')
                         # add Jurnal Data ke dalam model Journal
-                        journal = Journal(
+                        journal, created = Journal.objects.update_or_create(
                             title=title,
                             abstrack=abstract,
                             other=doi,
                         )
-                        journal.save()
+                        
+                        journal.reviewer.add(reviewer)
                         # Simpan journal_id dan reviewer_id pada detail_journal
-                        detail_entry = detail_journal.objects.create(
-                            journal_id=journal, 
-                            reviewer_id=reviewer  
-                        )
+                        # detail_entry = detail_journal.objects.create(
+                        #     journal_id=journal, 
+                        #     reviewer_id=reviewer  
+                        # )
                         counter.append(1)
-                        detail_entry.save()
+                        # detail_entry.save()
                     else:
                         print("")
     # Simpan log data scraping
