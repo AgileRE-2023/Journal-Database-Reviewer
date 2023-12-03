@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 from . import views
 
 # ... your other URL patterns ...
@@ -6,4 +6,5 @@ from . import views
 
 urlpatterns = [
     path("reviewer", view=views.reviewerScrapping, name="reviewer_scrapping")
+    path("journal", view=views.scraping_jurnal, name="journal_scrapping")
 ]
