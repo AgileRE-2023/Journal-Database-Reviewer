@@ -27,90 +27,28 @@
                     <br>
                     <!--PLACEHOLDER REVIEWER SELECTION-->
 
-                    <!--reviewer 1-->
-                    <div class="reviewer-list"> <!-- ini buat list reviewernya-->
-                        <img src="images/Vector.png">
-                        <div class="reviewer-list-content">
-                            <h2>
-                                Dr. Emily Datafield
-                            </h2>
-                            <h3>
-                                Tech Institute of Innovation
-                            </h3>
+                    {% for res in result | dictsort:"similarity_mentah" | slice:":10" %}
+                        <div class="reviewer-list"> <!-- ini buat list reviewernya-->
+                            <img src="images/Vector.png">
+                            <div class="reviewer-list-content">
+                                <h2>
+                                    Dr. Emily Datafield
+                                </h2>
+                                <h3>
+                                    Tech Institute of Innovation
+                                </h3>
+                            </div>
+                            <img src="images/bidang data analytics.png">
+                            <img src="images/bidang information security.png">
+                            <img src="images/bidang blockchain technology.png">
+                            <div class="choose-button">
+                                <button type="button" class="primary-btn">
+                                    <a href="" style="color:white; text-decoration: none;">Choose</a>
+                                </button>    
+                            </div>                        
                         </div>
-                        <img src="images/bidang data analytics.png">
-                        <img src="images/bidang information security.png">
-                        <img src="images/bidang blockchain technology.png">
-                        <div class="choose-button">
-                            <button type="button" class="primary-btn">
-                                <a href="" style="color:white; text-decoration: none;">Choose</a>
-                            </button>    
-                        </div>                        
-                    </div>
+                    {% endfor %}
 
-                    <!--reviewer 1-->
-                    <div class="reviewer-list"> <!-- ini buat list reviewernya-->
-                        <img src="images/Vector.png">
-                        <div class="reviewer-list-content">
-                            <h2>
-                                Dr. Emily Datafield
-                            </h2>
-                            <h3>
-                                Tech Institute of Innovation
-                            </h3>
-                        </div>
-                        <img src="images/bidang data analytics.png">
-                        <img src="images/bidang information security.png">
-                        <img src="images/bidang blockchain technology.png">
-                        <div class="choose-button">
-                            <button type="button" class="primary-btn">
-                                <a href="" style="color:white; text-decoration: none;">Choose</a>
-                            </button>
-                        </div>                        
-                    </div>
-
-
-                    <!--reviewer 1-->
-                    <div class="reviewer-list"> <!-- ini buat list reviewernya-->
-                        <img src="images/Vector.png">
-                        <div class="reviewer-list-content">
-                            <h2>
-                                Dr. Emily Datafield
-                            </h2>
-                            <h3>
-                                Tech Institute of Innovation
-                            </h3>
-                        </div>
-                        <img src="images/bidang data analytics.png">
-                        <img src="images/bidang information security.png">
-                        <img src="images/bidang blockchain technology.png">
-                        <div class="choose-button">
-                            <button type="button" class="primary-btn">
-                                <a href="" style="color:white; text-decoration: none;">Choose</a>
-                            </button>    
-                        </div>                        
-                    </div>
-
-                    <!--reviewer 1-->
-                    <div class="reviewer-list"> <!-- ini buat list reviewernya-->
-                        <img src="images/Vector.png">
-                        <div class="reviewer-list-content">
-                            <h2>
-                                Dr. Emily Datafield
-                            </h2>
-                            <h3>
-                                Tech Institute of Innovation
-                            </h3>
-                        </div>
-                        <img src="images/bidang data analytics.png">
-                        <img src="images/bidang information security.png">
-                        <img src="images/bidang blockchain technology.png">
-                        <div class="choose-button">
-                            <button type="button" class="primary-btn">
-                                <a href="" style="color:white; text-decoration: none;">Choose</a>
-                            </button>
-                        </div>                        
-                    </div>
 
 
                     
