@@ -7,6 +7,7 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+
 # Create your views here.
 def reviewer_list(request):  
     reviewers = Reviewer.objects.order_by("name").all()
