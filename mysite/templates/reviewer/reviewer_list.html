@@ -30,6 +30,28 @@
         position: relative;
       }
 
+      .button-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 50px;
+      }
+
+      .pagination{
+        display: flex;
+        align-items: center;
+      }
+
+      a{
+        text-decoration: none;
+        color: black;
+      }
+
+      a:hover{
+        color: #ffc107;
+      }
+
       .data {
         width: 100%;
         height: 100%;
@@ -218,8 +240,6 @@
         border: 2px solid black;
         padding: 2px 20px;
         border-radius: 12px;
-        position: absolute;
-        bottom: 15px;
         transition: 300ms;
       }
       .data .btn-back:hover {
@@ -274,7 +294,7 @@
 
       <!-- data reviewer -->
       <div class="scroll">
-        {% for reviewer in reviewers %}
+        {% for reviewer in page_obj %}
         <div class="item">
           <div class="kiri">
             <i class="bi bi-person-square"></i>
@@ -295,8 +315,29 @@
         {% endfor %}
       </div>
       <!-- akhir data reviewer -->
+      <div class="button-container">
+        <div class="back-btn">
+          <a class="btn-back" href="{% url "dashboard" %}">Back</a>
+        </div>
 
-      <a class="btn-back" href="{% url "dashboard" %}">Back</a>
+        <div class="pagination">
+          <span class="step-links">
+              {% if page_obj.has_previous %}
+                  <a href="?page=1">&laquo; first</a>
+                  <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+              {% endif %}
+      
+              <span class="current">
+                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              </span>
+      
+              {% if page_obj.has_next %}
+                  <a href="?page={{ page_obj.next_page_number }}">next</a>
+                  <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+              {% endif %}
+          </span>
+        </div>
+      </div>
     </div>
 
     <!-- overlay save data -->

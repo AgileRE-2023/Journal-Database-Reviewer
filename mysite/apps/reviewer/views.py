@@ -1,11 +1,15 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from apps.master.models import Reviewer  
+from django.core.paginator import Paginator
 
 # Create your views here.
 def reviewer_list(request):  
-    reviewers = Reviewer.objects.all()  
-    return render(request,"reviewer/reviewer_list.html",{'reviewers':reviewers})
+    reviewers = Reviewer.objects.order_by("name").all()
+    page = Paginator(reviewers, 24)
+    page_number = request.GET.get("page")
+    page_obj = page.get_page(page_number)
+    return render(request,"reviewer/reviewer_list.html",{'page_obj':page_obj})
 
 def add(request):
     if request.method == 'POST':
