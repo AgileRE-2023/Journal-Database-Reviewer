@@ -23,17 +23,18 @@
         <h3>Sign in</h3>
         <form id="flogin" action="" method="post">
           {% csrf_token %}
-          <div>{{form.email}}</div>
-          <div>{{form.password}}</div>
-          {% comment %}
-          <div>
-            <a href="" class="forgotPass">Forgot Password?</a>
+          <div
+            class="email-wrapper {% if form.passwords.errors %}error-input{% endif %}"
+          >
+            {{form.email}}
           </div>
-          {% endcomment %}
-          <div class="bottom-section">
-            <p class="error-message">{{ error }}</p>
-            <button type="submit" class="loginBtn">Sign in</button>
+          <div
+            class="password-wrapper {% if form.password.errors %}error-input{% endif %}"
+          >
+            {{form.password}}
           </div>
+          <p class="error-message">{{ error }}</p>
+          <button type="submit" class="loginBtn">Sign in</button>
         </form>
       </div>
     </div>

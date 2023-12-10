@@ -26,8 +26,13 @@ def inputDataOJSFile(request):
         # Baca file Excel dan ambil data yang dibutuhkan
         df = pd.read_excel(excel_file)
 
-        selected_columns = ["givenname.Element:Text","familyname.Element:Text", "email", "review_interests"]
-        
+        selected_columns = [
+            "givenname.Element:Text",
+            "familyname.Element:Text",
+            "email",
+            "review_interests",
+        ]
+
         if not set(selected_columns).issubset(df.columns):
             messages.info(request, "Kolom pada file excel tidak sesuai")
             return redirect("upload data OJS")
@@ -41,8 +46,10 @@ def inputDataOJSFile(request):
         for index, row in df.iterrows():
             data_dict = row.to_dict()
 
-            data_dict['name'] = f"{data_dict.get('givenname.Element:Text', '')} {data_dict.get('familyname.Element:Text', '')}"
-            data_dict['other'] = f"{data_dict.get('review_interests', '')}"
+            data_dict[
+                "name"
+            ] = f"{data_dict.get('givenname.Element:Text', '')} {data_dict.get('familyname.Element:Text', '')}"
+            data_dict["other"] = f"{data_dict.get('review_interests', '')}"
 
             data_dict.pop("givenname.Element:Text", None)
             data_dict.pop("familyname.Element:Text", None)
@@ -63,7 +70,10 @@ def inputDataOJSFile(request):
         upload_data = Upload_Data(editor_id=editor, upload_date=timezone.now())
         upload_data.save()
 
-        messages.success(request, f'File Excel berhasil diunggah dan data disimpan. Data yang berhasil dimasukkan: {success_count} dari {total_entries} total entri.')
+        messages.success(
+            request,
+            f"File Excel berhasil diunggah dan data disimpan. Data yang berhasil dimasukkan: {success_count} dari {total_entries} total entri.",
+        )
         return redirect("upload data OJS")
 
     return render(request, "reviewer/upload data OJS.html")
@@ -89,6 +99,31 @@ def signin(request):
         form = EditorForm()
 
     return render(request, "master/signin.html", {"form": EditorForm()})
+
+
+def csrf_failure(request, reason=""):
+    if request.method == "POST":
+        form = EditorForm(data=request.POST)
+        email = form.data["email"]
+        password = form.data["password"]
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("dashboard")
+        else:
+            return render(
+                request,
+                "master/signin.html",
+                {"form": form, "error": "User not found"},
+            )
+    else:
+        form = EditorForm()
+    return render(request, "master/signin.html", {"form": EditorForm()})
+
+
+def dashboard(request):
+    return render(request, "master/dashboard.html")
+
 
 def signout(request):
     logout(request)

@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import pymysql
+
+# pymysql.version_info = (1, 4, 6, "final", 0)
+pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,7 +49,6 @@ INSTALLED_APPS = [
     "theme",
     "django_browser_reload",
     "behave_django",
-    
 ]
 
 AUTH_USER_MODEL = "master.Editor"
@@ -59,7 +62,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
-
 ]
 
 ROOT_URLCONF = "mysite.urls"
@@ -89,7 +91,7 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "journal_reviewer",
+        "NAME": "database-reviewer",
         "USER": "root",
         "PASSWORD": "",
         "HOST": "localhost",
@@ -97,16 +99,16 @@ DATABASES = {
     }
 }
 
+CSRF_FAILURE_VIEW = "apps.master.views.csrf_failure"
+
 BEHAVE = {
-    'DEFAULT_TAGS': '@django',
-    'SHOW_SNIPPET': True,
-    'SHOW_SKIPPED': True,
-    'SHOW_TIMING': True,
-    'ENABLE_ASSERTIONS': True,
-    'STEPS_DIR' : 'tests/acceptance/steps'
+    "DEFAULT_TAGS": "@django",
+    "SHOW_SNIPPET": True,
+    "SHOW_SKIPPED": True,
+    "SHOW_TIMING": True,
+    "ENABLE_ASSERTIONS": True,
+    "STEPS_DIR": "tests/acceptance/steps",
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -165,6 +167,6 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-TAILWIND_APP_NAME = 'theme'
+TAILWIND_APP_NAME = "theme"
 
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"

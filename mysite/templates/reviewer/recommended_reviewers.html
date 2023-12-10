@@ -1,223 +1,129 @@
-{% load static %}
+{% load static %} {% load tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Airlangga Journal Database Reviewer</title>
-    <link rel="stylesheet" href="{% static 'reviewer/style/floren-style.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-</head>
-<body>
-
+    <link
+      rel="stylesheet"
+      href="{% static 'reviewer/style/floren-style.css' %}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    {% tailwind_preload_css %} {% tailwind_css %}
+  </head>
+  <body>
     <div class="recommended-reviewers-page">
-        <div class="recommended-reviewers-container">
-
-            <!-- BAGIAN ATAS (LIST REVIEWER) LEFT COLUMN-->
-
-            <div class="recrev-container-1">
-                <div class="left-column-1">
-                    <h1>
-                        Who do you want to review your paper?
-                    </h1>
-                    <br>
-                    <!--PLACEHOLDER REVIEWER SELECTION-->
-
-                    <!--reviewer 1-->
-                    <div class="reviewer-list"> <!-- ini buat list reviewernya-->
-                        <img src="images/Vector.png">
-                        <div class="reviewer-list-content">
-                            <h2>
-                                Dr. Emily Datafield
-                            </h2>
-                            <h3>
-                                Tech Institute of Innovation
-                            </h3>
-                        </div>
-                        <img src="images/bidang data analytics.png">
-                        <img src="images/bidang information security.png">
-                        <img src="images/bidang blockchain technology.png">
-                        <div class="choose-button">
-                            <button type="button" class="primary-btn">
-                                <a href="" style="color:white; text-decoration: none;">Choose</a>
-                            </button>    
-                        </div>                        
+      <div class="recommended-reviewers-container">
+        <!-- BAGIAN ATAS (LIST REVIEWER) LEFT COLUMN-->
+        <div class="">
+          <div class="left-column-1">
+            <h1>Who do you want to review your paper?</h1>
+            <br />
+            <!--PLACEHOLDER REVIEWER SELECTION-->
+            {%for data, values in result.items %}
+            <div class="flex flex-col border border-black rounded-md w-full">
+              <div class="flex justify-between">
+                <div class="flex p-4 flex-col w-full justify-center">
+                  <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                      <img
+                        src="{% static 'reviewer/images/Vector.png' %}"
+                        alt="placeholder"
+                        class="mr-3"
+                      />
+                      <p class="text-xl font-bold">{{data}}</p>
                     </div>
-
-                    <!--reviewer 1-->
-                    <div class="reviewer-list"> <!-- ini buat list reviewernya-->
-                        <img src="images/Vector.png">
-                        <div class="reviewer-list-content">
-                            <h2>
-                                Dr. Emily Datafield
-                            </h2>
-                            <h3>
-                                Tech Institute of Innovation
-                            </h3>
-                        </div>
-                        <img src="images/bidang data analytics.png">
-                        <img src="images/bidang information security.png">
-                        <img src="images/bidang blockchain technology.png">
-                        <div class="choose-button">
-                            <button type="button" class="primary-btn">
-                                <a href="" style="color:white; text-decoration: none;">Choose</a>
-                            </button>
-                        </div>                        
+                    <div class="">
+                      <p class="text-xl">{{data}}</p>
                     </div>
-
-
-                    <!--reviewer 1-->
-                    <div class="reviewer-list"> <!-- ini buat list reviewernya-->
-                        <img src="images/Vector.png">
-                        <div class="reviewer-list-content">
-                            <h2>
-                                Dr. Emily Datafield
-                            </h2>
-                            <h3>
-                                Tech Institute of Innovation
-                            </h3>
+                  </div>
+                  <!--Penelitian Sebelumnya (Deafult:hidden)-->
+                  <div class="journal hidden">
+                    <div class="flex flex-col">
+                      <p class="text-xl mt-4 mb-3">Research Papers</p>
+                      {% for value in values %}
+                      <div class="flex justify-between items-center mb-3">
+                        <div class="">
+                          <p class="">{{value.title_db}}</p>
                         </div>
-                        <img src="images/bidang data analytics.png">
-                        <img src="images/bidang information security.png">
-                        <img src="images/bidang blockchain technology.png">
-                        <div class="choose-button">
-                            <button type="button" class="primary-btn">
-                                <a href="" style="color:white; text-decoration: none;">Choose</a>
-                            </button>    
-                        </div>                        
-                    </div>
-
-                    <!--reviewer 1-->
-                    <div class="reviewer-list"> <!-- ini buat list reviewernya-->
-                        <img src="images/Vector.png">
-                        <div class="reviewer-list-content">
-                            <h2>
-                                Dr. Emily Datafield
-                            </h2>
-                            <h3>
-                                Tech Institute of Innovation
-                            </h3>
+                        <div class="">
+                          <p class="">{{value.similarity_koma}}%</p>
                         </div>
-                        <img src="images/bidang data analytics.png">
-                        <img src="images/bidang information security.png">
-                        <img src="images/bidang blockchain technology.png">
-                        <div class="choose-button">
-                            <button type="button" class="primary-btn">
-                                <a href="" style="color:white; text-decoration: none;">Choose</a>
-                            </button>
-                        </div>                        
+                      </div>
+                      {% endfor %}
                     </div>
-
-
-                    
+                  </div>
+                  <div class="flex items-center justify-center">
+                    <button id="showDataBtn" class="cursor-pointer">
+                      <ion-icon name="chevron-down-outline"></ion-icon>
+                    </button>
+                    <button id="hideDataBtn" class="cursor-pointer hidden">
+                      <ion-icon name="chevron-up-outline"></ion-icon>
+                    </button>
+                  </div>
                 </div>
-                <div class="right-column-1">
-                    
-
+                <div
+                  class="flex p-3 justify-center items-center bg-black rounded-br-md rounded-tr-md"
+                >
+                  <p class="text-white text-2xl">Choose</p>
                 </div>
-
+              </div>
             </div>
-
-            <!-- BAGIAN TENGAH (PILIHAN REVIEWER?? RATA KANAN) RIGHT COLUMN-->
-            
-            <div class="recrev-container-2">
-                <div class="reviewer-detail-box">
-                    <div class="grid-1">
-                        <div>
-                            <img src="images/Vector.png">
-                        </div>
-                        <div class="grid-1-1">
-                            <div class="grid-1-1-nama">
-                                Prof. Alan Networkson
-                            </div>
-                            <div class="grid-1-1-affilation">
-                                CyberTech University
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="Research-interest">
-                            Research Interest:
-                        </div>
-                    </div>
-                    <div class="grid-3">
-                        <div>
-                            <img src="images/bidang network technology.png">
-                        </div>
-                        <div>
-                            <img src="images/bidang cloud computing.png">
-                        </div>
-                        <div>
-                            <img src="images/bidang iot in healthcare.png">
-                        </div>
-                        <div>
-                            <button type="button" class="second-btn">
-                                <a href="" style="color:black; text-decoration: none;">Choose</a>
-                            </button>  
-                        </div>
-                    </div>
-                </div>
-
-                <div class="reviewer-detail-box">
-                    <div class="grid-1">
-                        <div>
-                            <img src="images/Vector.png">
-                        </div>
-                        <div class="grid-1-1">
-                            <div class="grid-1-1-nama">
-                                Prof. Alan Networkson
-                            </div>
-                            <div class="grid-1-1-affilation">
-                                CyberTech University
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="Research-interest">
-                            Research Interest:
-                        </div>
-                    </div>
-                    <div class="grid-3">
-                        <div>
-                            <img src="images/bidang network technology.png">
-                        </div>
-                        <div>
-                            <img src="images/bidang cloud computing.png">
-                        </div>
-                        <div>
-                            <img src="images/bidang iot in healthcare.png">
-                        </div>
-                        <div>
-                            <button type="button" class="second-btn">
-                                <a href="" style="color:black; text-decoration: none;">Choose</a>
-                            </button>  
-                        </div>
-                    </div>
-                </div>
-                
-
-            </div>
-
-            <!-- BAGIAN BAWAH BACK SAMA SAVE-->
-            <div class="recrev-container-3">
-                <div class="back-button">
-                    <button type="button" class="third-btn">
-                        <a href="" style="color:black; text-decoration: none;">Back</a>
-                </div>
-
-                <div class="save-button">
-                    <button type="button" class="third-btn">
-                        <a href="" style="color:black; text-decoration: none;">Save and Continue</a>
-                </div>
-
-            </div>
+            {% endfor %}
+          </div>
         </div>
 
+        <!-- BAGIAN BAWAH BACK SAMA SAVE-->
+        <div class="recrev-container-3">
+          <div class="back-button">
+            <button type="button" class="third-btn">
+              <a href="" style="color: black; text-decoration: none">Back</a>
+            </button>
+          </div>
+
+          <div class="save-button">
+            <button type="button" class="third-btn">
+              <a href="" style="color: black; text-decoration: none"
+                >Save and Continue</a
+              >
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    
-</body>
+    <script>
+      let show = document.querySelector("#showDataBtn");
+      let hidden = document.querySelector("#hideDataBtn");
+
+      show.addEventListener("click", function () {
+        let journal = document.querySelector(".journal");
+        journal.classList.remove("hidden");
+        show.classList.add("hidden");
+        hidden.classList.remove("hidden");
+      });
+
+      hidden.addEventListener("click", function () {
+        let journal = document.querySelector(".journal");
+        journal.classList.add("hidden");
+        show.classList.remove("hidden");
+        hidden.classList.add("hidden");
+      });
+    </script>
+  </body>
 </html>

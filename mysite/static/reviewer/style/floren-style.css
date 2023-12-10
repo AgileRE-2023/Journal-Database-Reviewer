@@ -1,11 +1,12 @@
 /*file uploader css*/
 
-.file-uploader-top-title{
+.file-uploader-top-title {
     display: flex;
     margin-top: 30px;
     justify-content: center;
 }
-.center-column h1{
+
+.center-column h1 {
     font-family: 'EB Garamond', serif;
     font-size: 64px;
     font-weight: 400;
@@ -13,7 +14,7 @@
     text-align: center;
 }
 
-.center-column h2{
+.center-column h2 {
     font-family: 'EB Garamond', serif;
     font-size: 32px;
     font-weight: 400;
@@ -22,7 +23,7 @@
     text-align: center;
 }
 
-.file-uploader-container{
+.file-uploader-container {
     width: 100%;
     height: auto;
     position: relative;
@@ -31,7 +32,7 @@
 
 }
 
-.file-upload-box{
+.file-upload-box {
     width: 900px;
     height: 400px;
     background-color: #D4D4D4;
@@ -40,18 +41,18 @@
     border-radius: 16px;
 }
 
-.file-uploader-container img{
+.file-uploader-container img {
     margin: 0;
     position: absolute;
     top: 40%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    
+
 
 }
 
-.file-uploader-container h3{
+.file-uploader-container h3 {
     font-family: 'EB Garamond', serif;
     font-size: 24px;
     font-weight: 400;
@@ -74,15 +75,15 @@
 
 /* recommended reviewers css */
 
-.recommended-reviewers-page{
+.recommended-reviewers-page {
     display: flex;
     margin-top: 10px;
     justify-content: center;
 }
 
-.recommended-reviewers-container{
+.recommended-reviewers-container {
     width: 1200px;
-    display: block;
+    /* display: block; */
     margin-top: 30px;
     margin-bottom: 30px;
     margin-left: 10px;
@@ -95,12 +96,12 @@
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.recrev-container-1{
+.recrev-container-1 {
     display: grid;
     grid-template-columns: 70% 30%;
 }
 
-.left-column-1{
+.left-column-1 {
     padding-top: 10px;
     padding-left: 30px;
     padding-right: 30px;
@@ -108,14 +109,14 @@
     justify-content: start;
 }
 
-.left-column-1 h1{
+.left-column-1 h1 {
     font-family: 'Helvetica';
     font-size: 24px;
     font-weight: 600;
     color: black;
 }
 
-.reviewer-list{
+.reviewer-list {
     width: 700px;
     margin-top: 0px;
     margin-bottom: 30px;
@@ -125,13 +126,13 @@
     border-width: 2px;
     border-radius: 16px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.10);
-    display: grid; 
+    display: grid;
     place-items: center;
     /*pembagian container*/
-    grid-template-columns: 15% 34% 12% 12% 12% 15%; 
+    grid-template-columns: 15% 34% 12% 12% 12% 15%;
 }
 
-.reviewer-list img{
+.reviewer-list img {
     width: 48px;
     display: grid;
     place-items: center;
@@ -139,26 +140,31 @@
     align-items: center;
 }
 
+.reviewer-list-content {
+    display: flex;
+    flex-direction: row;
+    background: black;
+}
 
-.reviewer-list-content h2{
+/* .reviewer-list-content h2 {
     font-family: 'Helvetica';
     font-size: 16px;
     font-weight: 600;
     color: black;
 }
 
-.reviewer-list-content h3{
+.reviewer-list-content h3 {
     font-family: 'Helvetica';
     font-size: 14px;
     font-weight: 200;
     color: black;
-}
+} */
 
-.choose-button{
+.choose-button {
     justify-content: end;
 }
 
-.primary-btn{
+.primary-btn {
     height: 100%;
     justify-content: end;
     float: right;
@@ -175,12 +181,12 @@
     font-size: 16px;
 }
 
-.recrev-container-2{
+.recrev-container-2 {
     display: flex;
     flex-direction: row-reverse;
 }
 
-.reviewer-detail-box{
+.reviewer-detail-box {
     display: grid;
     border: solid black;
     border-width: 2px;
@@ -191,7 +197,7 @@
     margin-right: 30px;
 }
 
-.grid-1{
+.grid-1 {
     display: grid;
     grid-template-columns: 20% 80%;
     place-items: center;
@@ -199,28 +205,28 @@
     align-items: center;
 }
 
-.grid-1 img{
+.grid-1 img {
     width: 60px;
 }
 
-.grid-1-1-nama{
+.grid-1-1-nama {
     font-family: Helvetica;
     font-size: 10;
     font-weight: 600;
 }
 
-.grid-1-1-affilation{
+.grid-1-1-affilation {
     font-family: Helvetica;
     font-size: 12;
     font-weight: 400;
 }
 
-.grid-3{
+.grid-3 {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
 }
 
-.Research-interest{
+.Research-interest {
     font-family: Helvetica;
     font-size: 12;
     font-weight: 400;
@@ -229,7 +235,7 @@
     margin-bottom: 7px;
 }
 
-.second-btn{
+.second-btn {
     height: 30px;
     justify-content: center;
     float: left;
@@ -247,13 +253,13 @@
     font-size: 16px;
 }
 
-.recrev-container-3{
+.recrev-container-3 {
     padding: 30px;
     display: flex;
     justify-content: space-between;
 }
 
-.third-btn{
+.third-btn {
     height: 30px;
     justify-content: center;
     float: left;
@@ -278,13 +284,13 @@
 
 /* JOURNAL SUBMISSION FORM CSS */
 
-.journal_submission_page{
+.journal_submission_page {
     display: flex;
     margin-top: 30px;
     justify-content: center;
 }
 
-.journal_submission_container{
+.journal_submission_container {
     width: 900px;
     border-radius: 16px;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -292,48 +298,49 @@
     /*pembagian container*/
     grid-template-columns: 60% 40%;
 }
-.journal_submission_left{
+
+.journal_submission_left {
     padding: 30px;
 }
-.journal_submission_container h1{
+
+.journal_submission_container h1 {
     font-family: 'Helvetica';
     font-size: 24px;
     font-weight: 600;
     color: black;
 }
 
-.journal_submission_container h2{
+.journal_submission_container h2 {
     font-family: 'Helvetica';
     font-size: 16px;
     font-weight: 400;
     color: black;
 }
 
-.journal_submission_left input{
+.journal_submission_left input {
     padding: 5px;
     border-radius: 7px;
     border-width: 1px;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
-.input-1{
+.input-1 {
     width: 400px;
 }
 
-.input-2{
+.input-2 {
     width: 150px;
 }
 
-.input-3{
+.input-3 {
     width: 400px;
     height: 200px;
 }
 
-.journal_submission_right{
+.journal_submission_right {
     background-color: #D4D4D4;
     display: flex;
     place-items: center;
     justify-content: center;
     align-items: center;
 }
-

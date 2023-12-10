@@ -1,51 +1,78 @@
-{% load static %}
+{% load static %} {% load tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Airlangga Journal Database Reviewer</title>
-    <link rel="stylesheet" href="{% static 'reviewer/style/eka-style.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-</head>
-<body>
-    <form action="{% url "reviewer:recommend" %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <div class="journal_submission_page">
-            <div class="journal_submission_container">
-                <div class="journal_submission_left">
-                    <h1>
-                        Journal Submission Form
-                    </h1>
-                    <h2>
-                        Journal Title
-                    </h2>
-                    <input type="text" id="title" name="title" class="input-1"><br><br>
-                    <h2>
-                        Publish Date
-                    </h2>
-                    <input type="date" id="date" name="date" class="input-2"><br><br>
-                    <h2>
-                        Abstract
-                    </h2>
-                    <input type="text" id="abstract" name="abstract" class="input-3"><br><br>
-                    <div class="save-button">
-                        <button type="submit" class="third-btn">
-                            <div style="color:bldivck; text-decoration: none;">Save and Continue</div>
-                        </button>
-                    </div>
-                </div>
-    
-                <div class="journal_submission_right">
-                    <img src="{% static 'reviewer/images/submission.png' %}" alt="placeholder">
-                </div>      
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    {% tailwind_preload_css %} {% tailwind_css %}
+  </head>
+  <body class="container mx-auto flex items-center justify-center">
+    <form action="" method="post">
+      {% csrf_token %} {{ form }}
+      <div class="flex mt-36 shadow-lg rounded-2xl">
+        <div class="border-2 p-9 rounded-tl-2xl rounded-bl-2xl">
+          <h1 class="text-2xl font-bold">Journal Submission Form</h1>
+          <div class="flex flex-col gap-4 py-4">
+            <div>
+              <h2>Journal Title</h2>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                class="w-[408px] shadow-md border-opacity-30 border-[1px] border-black"
+                placeholder="Lorem Ipsum dolor sit amet..."
+              />
             </div>
-        </div> 
+            <div>
+              <h2>Abstract</h2>
+              <textarea
+                type="text"
+                id="abstract"
+                rows="5"
+                name="abstract"
+                class="w-[408px] shadow-md border-opacity-30 border-[1px] border-black"
+                placeholder="Lorem Ipsum Dolor sit amet..."
+              ></textarea>
+            </div>
+            <div class="save-button">
+              <button type="submit" class="third-btn">
+                <div class="border-black border-[1px] px-6 rounded-lg py-1">
+                  Save and Continue
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-tr-2xl rounded-br-2xl flex select-none">
+          <img
+            src="{% static 'reviewer/images/submission.png' %}"
+            alt="placeholder"
+          />
+        </div>
+      </div>
     </form>
-</body>
+    <div class="absolute top-12 right-12 w-12">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-log-out"
+      >
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+        <polyline points="16 17 21 12 16 7" />
+        <line x1="21" x2="9" y1="12" y2="12" />
+      </svg>
+    </div>
+  </body>
 </html>
