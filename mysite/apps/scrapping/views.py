@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from elsapy.elsclient import ElsClient
 from elsapy.elssearch import ElsSearch
 from django.contrib import messages
-from ..master.models import Editor, Reviewer, Journal, Scraping
+from ..master.models import Editor, Reviewer, Journal, Scrapping
 from django.utils import timezone
 import requests
 
@@ -49,11 +49,10 @@ async def reviewerScrapping(request):
     # return redirect('dashboard')
 
 
-@sync_to_async
-def create_scrapping(editor_id):
-    scrapping = Scraping(editor_id=editor_id)
+def create_scrapping(request):
+    scrapping = Scrapping(editor_id=request.user.editor_id)
     scrapping.save()
-    return True
+    return redirect('dashboard')
 
 
 async def index(request):
@@ -62,7 +61,7 @@ async def index(request):
         request,
         f"Updated {result['responses']} Reviewer Scopus ID, takes {result['end'] - result['start']:0.1f} seconds",
     )
-    return redirect("dashboard")
+    return redirect("create scrapping")
 
 
 async def searchAuthorData(reviewers: list[Reviewer]):
@@ -110,7 +109,7 @@ def scraping_jurnal(request):
     }
 
     counter = []
-    for reviewer in reviewers[0:6]:
+    for reviewer in reviewers[0:3]:
         author_author_id = reviewer.scopus_id
         # find scopus_id berdasarkan author_id
         if author_author_id:
@@ -160,7 +159,7 @@ def scraping_jurnal(request):
                     else:
                         print("")
     # Simpan log data scraping
-    scraping_data = Scraping(editor_id=editor, scraping_date=timezone.now())
+    scraping_data = Scrapping(editor_id=editor.editor_id, isReviewerScrap = False)
     scraping_data.save()
     messages.success(request, f"Updated {len(counter)} Abstract")
     return redirect("dashboard")

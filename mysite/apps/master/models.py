@@ -51,8 +51,10 @@ class Upload_Data(models.Model):
 
 class Scrapping(models.Model):
     scrapping_id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
-    jenis_scrapping = models.CharField(max_length=1)
     scrapping_date = models.DateField(auto_now=False, auto_now_add=True)
+    editor = models.ForeignKey(Editor, on_delete=models.SET_NULL, null=True)
+    isReviewerScrap = models.BooleanField(default=True)
+     
     
     class Meta:
         verbose_name = "Scrapping"
@@ -81,21 +83,22 @@ class Reviewer(models.Model):
     def get_absolute_url(self):
         return reverse("Reviewer_detail", kwargs={"pk": self.pk})
     
-class Scraping(models.Model):
-    scraping_id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-    scraping_date = models.DateTimeField(auto_now=False, auto_now_add=True)
-    editor_id = models.ForeignKey(Editor, on_delete=models.SET_NULL, null=True)
+# class Scraping(models.Model):
+#     scraping_id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
+#     scraping_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+#     editor_id = models.ForeignKey(Editor, on_delete=models.SET_NULL, null=True)
+#     isReviewerScrap = models.BooleanField(default=True)  
     
 
-    class Meta:
-        verbose_name = "Scraping_Data"
-        verbose_name_plural = "Scraping_Datas"
+#     class Meta:
+#         verbose_name = "Scraping_Data"
+#         verbose_name_plural = "Scraping_Datas"
 
-    def __str__(self):
-        return self.scraping_id
+#     def __str__(self):
+#         return self.scraping_id
 
-    def get_absolute_url(self):
-        return reverse("Scraping_Data_detail", kwargs={"pk": self.pk})
+#     def get_absolute_url(self):
+#         return reverse("Scraping_Data_detail", kwargs={"pk": self.pk})
     
 class Journal(models.Model):
     journal_id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
