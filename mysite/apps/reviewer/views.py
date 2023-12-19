@@ -81,6 +81,7 @@ def submission(request):
         for journal in all_journal:
             title_journal_db = journal.title
             abstract_journal_db = journal.abstrack
+            doi_journal = journal.other
             author_journal_db = journal.reviewer.all().values()
             combined_journal_db = "{}. {}".format(title_journal_db, abstract_journal_db)
 
@@ -118,6 +119,7 @@ def submission(request):
                 {
                     "title_db": title_journal_db,
                     "abstract_db": abstract_journal_db,
+                    "doi_journal" : doi_journal,
                     "author_db": author_journal_db[0],
                     "similarity_mentah": similarity,
                     "similarity_bulat": int_similarity,

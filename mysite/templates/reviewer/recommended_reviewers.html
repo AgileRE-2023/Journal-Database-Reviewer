@@ -57,7 +57,11 @@
                       {% for value in values %}
                       <div class="flex justify-between items-center mb-3">
                         <div class="">
-                          <p class="">{{value.title_db}}</p>
+                          <a
+                            href="https://doi.org/{{ value.doi_journal }}"
+                            target="_blank">
+                            <p class="">{{value.title_db}}</p>
+                          </a>
                         </div>
                         <div class="">
                           <p class="">{{value.similarity_koma}}%</p>
