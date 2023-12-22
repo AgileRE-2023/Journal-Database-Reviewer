@@ -8,61 +8,79 @@ from nltk.stem import WordNetLemmatizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+
 # Create your views here.
-def reviewer_list(request):  
+def reviewer_list(request):
     reviewers = Reviewer.objects.order_by("name").all()
     page = Paginator(reviewers, 24)
     page_number = request.GET.get("page")
     page_obj = page.get_page(page_number)
-    return render(request,"reviewer/reviewer_list.html",{'page_obj':page_obj})
+    return render(request, "reviewer/reviewer_list.html", {"page_obj": page_obj})
+
 
 def add(request):
-    if request.method == 'POST':
-        fullname = request.POST.get('name')
-        email = request.POST.get('email')
+    if request.method == "POST":
+        fullname = request.POST.get("name")
+        email = request.POST.get("email")
         # institution = request.POST.get('institution')
-        scopus_id = request.POST.get('scopus_id')
-        scholar_id = request.POST.get('scholar_id')
+        scopus_id = request.POST.get("scopus_id")
+        scholar_id = request.POST.get("scholar_id")
 
         reviewer = Reviewer(
             name=fullname,
             email=email,
             # institution=institution,
             scopus_id=scopus_id,
-            scholar_id=scholar_id
+            scholar_id=scholar_id,
         )
 
         reviewer.save()
-        return redirect('reviewer:reviewer_list') 
+        return redirect("reviewer:reviewer_list")
 
 
 def edit(request):
-    if request.method == 'POST':
-        reviewer_id = request.POST.get('reviewer_id')
+    if request.method == "POST":
+        reviewer_id = request.POST.get("reviewer_id")
         reviewer = Reviewer.objects.get(reviewer_id=reviewer_id)
         # breakpoint()
-        reviewer.name = request.POST.get('name')
-        reviewer.email = request.POST.get('email')
+        reviewer.name = request.POST.get("name")
+        reviewer.email = request.POST.get("email")
         # reviewer.institution = request.POST.get('institution')
-        reviewer.scopus_id = request.POST.get('scopus_id')
-        reviewer.scholar_id = request.POST.get('scholar_id')
+        reviewer.scopus_id = request.POST.get("scopus_id")
+        reviewer.scholar_id = request.POST.get("scholar_id")
 
         reviewer.save()
 
-        return redirect('reviewer:reviewer_list')
+        return redirect("reviewer:reviewer_list")
 
 
 def delete(request, id):
-    employee = Reviewer.objects.get(id=id)  
-    employee.delete()  
-    return redirect("/") 
+    employee = Reviewer.objects.get(id=id)
+    employee.delete()
+    return redirect("/")
 
 
 def submission(request):
     if request.method == "POST":
         title_input = request.POST.get("title")
+
         abstract_input = request.POST.get("abstract")
-        combined_input = "{}. {}".format(title_input, abstract_input)
+        delkeywords = [
+            "Background:",
+            "Objective:",
+            "Methods:",
+            "Results:",
+            "Conclusion:",
+            "Keywords: ",
+            "Keyword: ",
+        ]
+        for keywords in delkeywords:
+            abstract_input = abstract_input.replace(keywords, "")
+        cleaned_abstract = " ".join(
+            line.strip() for line in abstract_input.split("\n") if line.strip()
+        )
+
+        combined_input = "{}. {}".format(title_input, cleaned_abstract)
 
         # Preprocessing data input
         lowercase = combined_input.lower()
@@ -119,7 +137,7 @@ def submission(request):
                 {
                     "title_db": title_journal_db,
                     "abstract_db": abstract_journal_db,
-                    "doi_journal" : doi_journal,
+                    "doi_journal": doi_journal,
                     "author_db": author_journal_db[0],
                     "similarity_mentah": similarity,
                     "similarity_bulat": int_similarity,
@@ -155,6 +173,7 @@ def submission(request):
 
 def upload(request):
     return render(request, "reviewer/file_uploader.html")
+
 
 def recommend(request):
     return render(request, "reviewer/recommended_reviewers.html")
