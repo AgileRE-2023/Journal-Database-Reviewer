@@ -1,120 +1,27 @@
-<testsuite name="features.add_reviewer_data.Add Reviewer Data" tests="2" errors="2" failures="0" skipped="0" time="8.027562" timestamp="2023-12-23T13:51:16.344338" hostname="LAPTOP-AUQQESOB"><testcase classname="features.add_reviewer_data.Add Reviewer Data" name="Add Reviewer" status="failed" time="5.649571"><error type="ElementNotInteractableException" message="Message: element not interactable&#10;  (Session info: chrome=120.0.6099.72)&#10;Stacktrace:&#10;&#09;GetHandleVerifier [0x00007FF6B12B2142+3514994]&#10;&#09;(No symbol) [0x00007FF6B0ED0CE2]&#10;&#09;(No symbol) [0x00007FF6B0D774C3]&#10;&#09;(No symbol) [0x00007FF6B0DBB6D7]&#10;&#09;(No symbol) [0x00007FF6B0DBA03E]&#10;&#09;(No symbol) [0x00007FF6B0DE5FEA]&#10;&#09;(No symbol) [0x00007FF6B0DB63B6]&#10;&#09;(No symbol) [0x00007FF6B0DE6490]&#10;&#09;(No symbol) [0x00007FF6B0E028F6]&#10;&#09;(No symbol) [0x00007FF6B0DE5D93]&#10;&#09;(No symbol) [0x00007FF6B0DB4BDC]&#10;&#09;(No symbol) [0x00007FF6B0DB5C64]&#10;&#09;GetHandleVerifier [0x00007FF6B12DE16B+3695259]&#10;&#09;GetHandleVerifier [0x00007FF6B1336737+4057191]&#10;&#09;GetHandleVerifier [0x00007FF6B132E4E3+4023827]&#10;&#09;GetHandleVerifier [0x00007FF6B10004F9+689705]&#10;&#09;(No symbol) [0x00007FF6B0EDC048]&#10;&#09;(No symbol) [0x00007FF6B0ED8044]&#10;&#09;(No symbol) [0x00007FF6B0ED81C9]&#10;&#09;(No symbol) [0x00007FF6B0EC88C4]&#10;&#09;BaseThreadInitThunk [0x00007FFDAC3D257D+29]&#10;&#09;RtlUserThreadStart [0x00007FFDAE3EAA58+40]&#10;">
-<![CDATA[
-Failing step: And i fill in Add Reviewer Form with Full Name, Email, Institution, Scopus ID, dan Scholar ID ... failed in 0.150s
-Location: tests/acceptance/features/add_reviewer_data.feature:7
-Traceback (most recent call last):
-  File "C:\Users\rizfi\AppData\Local\Programs\Python\Python310\lib\site-packages\behave\model.py", line 1329, in run
-    match.run(runner.context)
-  File "C:\Users\rizfi\AppData\Local\Programs\Python\Python310\lib\site-packages\behave\matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "tests\acceptance\steps\add_reviewer_data.py", line 35, in step_impl
-    name_input.send_keys(context.add_data['name'])
-  File "C:\Users\rizfi\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 230, in send_keys
-    self._execute(
-  File "C:\Users\rizfi\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 394, in _execute
-    return self._parent.execute(command, params)
-  File "C:\Users\rizfi\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
-    self.error_handler.check_response(response)
-  File "C:\Users\rizfi\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
-    raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
-  (Session info: chrome=120.0.6099.72)
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B12B2142+3514994]
-	(No symbol) [0x00007FF6B0ED0CE2]
-	(No symbol) [0x00007FF6B0D774C3]
-	(No symbol) [0x00007FF6B0DBB6D7]
-	(No symbol) [0x00007FF6B0DBA03E]
-	(No symbol) [0x00007FF6B0DE5FEA]
-	(No symbol) [0x00007FF6B0DB63B6]
-	(No symbol) [0x00007FF6B0DE6490]
-	(No symbol) [0x00007FF6B0E028F6]
-	(No symbol) [0x00007FF6B0DE5D93]
-	(No symbol) [0x00007FF6B0DB4BDC]
-	(No symbol) [0x00007FF6B0DB5C64]
-	GetHandleVerifier [0x00007FF6B12DE16B+3695259]
-	GetHandleVerifier [0x00007FF6B1336737+4057191]
-	GetHandleVerifier [0x00007FF6B132E4E3+4023827]
-	GetHandleVerifier [0x00007FF6B10004F9+689705]
-	(No symbol) [0x00007FF6B0EDC048]
-	(No symbol) [0x00007FF6B0ED8044]
-	(No symbol) [0x00007FF6B0ED81C9]
-	(No symbol) [0x00007FF6B0EC88C4]
-	BaseThreadInitThunk [0x00007FFDAC3D257D+29]
-	RtlUserThreadStart [0x00007FFDAE3EAA58+40]
-
-]]>
-</error><system-out>
+<testsuite name="features.add_reviewer_data.Add Reviewer Data" tests="2" errors="0" failures="0" skipped="0" time="5.75364" timestamp="2023-12-23T14:05:18.498402" hostname="LAPTOP-AUQQESOB"><testcase classname="features.add_reviewer_data.Add Reviewer Data" name="Add Reviewer" status="passed" time="2.800875"><system-out>
 <![CDATA[
 @scenario.begin
   Scenario: Add Reviewer
-    Given i am on List Reviewer Page ... passed in 5.421s
-    When i press Add button ... passed in 0.043s
-    And i see Add Reviewer Form ... passed in 0.036s
-    And i fill in Add Reviewer Form with Full Name, Email, Institution, Scopus ID, dan Scholar ID ... failed in 0.150s
-    And i press Save ... skipped in 0.000s
-    Then the response should contain Add Success ... skipped in 0.000s
+    Given i am on List Reviewer Page ... passed in 2.337s
+    When i press Add button ... passed in 0.011s
+    And i see Add Reviewer Form ... passed in 0.037s
+    And i fill in Add Reviewer Form with Full Name, Email, Scopus ID, dan Scholar ID ... passed in 0.299s
+    And i press Save ... passed in 0.105s
+    Then the response should contain Add Success ... passed in 0.013s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.add_reviewer_data.Add Reviewer Data" name="Add an Existing Reviewer" status="failed" time="2.377991"><error type="ElementNotInteractableException" message="Message: element not interactable&#10;  (Session info: chrome=120.0.6099.72)&#10;Stacktrace:&#10;&#09;GetHandleVerifier [0x00007FF6B12B2142+3514994]&#10;&#09;(No symbol) [0x00007FF6B0ED0CE2]&#10;&#09;(No symbol) [0x00007FF6B0D774C3]&#10;&#09;(No symbol) [0x00007FF6B0DBB6D7]&#10;&#09;(No symbol) [0x00007FF6B0DBA03E]&#10;&#09;(No symbol) [0x00007FF6B0DE5FEA]&#10;&#09;(No symbol) [0x00007FF6B0DB63B6]&#10;&#09;(No symbol) [0x00007FF6B0DE6490]&#10;&#09;(No symbol) [0x00007FF6B0E028F6]&#10;&#09;(No symbol) [0x00007FF6B0DE5D93]&#10;&#09;(No symbol) [0x00007FF6B0DB4BDC]&#10;&#09;(No symbol) [0x00007FF6B0DB5C64]&#10;&#09;GetHandleVerifier [0x00007FF6B12DE16B+3695259]&#10;&#09;GetHandleVerifier [0x00007FF6B1336737+4057191]&#10;&#09;GetHandleVerifier [0x00007FF6B132E4E3+4023827]&#10;&#09;GetHandleVerifier [0x00007FF6B10004F9+689705]&#10;&#09;(No symbol) [0x00007FF6B0EDC048]&#10;&#09;(No symbol) [0x00007FF6B0ED8044]&#10;&#09;(No symbol) [0x00007FF6B0ED81C9]&#10;&#09;(No symbol) [0x00007FF6B0EC88C4]&#10;&#09;BaseThreadInitThunk [0x00007FFDAC3D257D+29]&#10;&#09;RtlUserThreadStart [0x00007FFDAE3EAA58+40]&#10;">
-<![CDATA[
-Failing step: And i fill in Add Reviewer Form with Full Name, Email, Institution, Scopus ID, dan Scholar ID ... failed in 0.142s
-Location: tests/acceptance/features/add_reviewer_data.feature:16
-Traceback (most recent call last):
-  File "C:\Users\rizfi\AppData\Local\Programs\Python\Python310\lib\site-packages\behave\model.py", line 1329, in run
-    match.run(runner.context)
-  File "C:\Users\rizfi\AppData\Local\Programs\Python\Python310\lib\site-packages\behave\matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "tests\acceptance\steps\add_reviewer_data.py", line 35, in step_impl
-    name_input.send_keys(context.add_data['name'])
-  File "C:\Users\rizfi\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 230, in send_keys
-    self._execute(
-  File "C:\Users\rizfi\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webelement.py", line 394, in _execute
-    return self._parent.execute(command, params)
-  File "C:\Users\rizfi\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
-    self.error_handler.check_response(response)
-  File "C:\Users\rizfi\AppData\Local\Programs\Python\Python310\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
-    raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
-  (Session info: chrome=120.0.6099.72)
-Stacktrace:
-	GetHandleVerifier [0x00007FF6B12B2142+3514994]
-	(No symbol) [0x00007FF6B0ED0CE2]
-	(No symbol) [0x00007FF6B0D774C3]
-	(No symbol) [0x00007FF6B0DBB6D7]
-	(No symbol) [0x00007FF6B0DBA03E]
-	(No symbol) [0x00007FF6B0DE5FEA]
-	(No symbol) [0x00007FF6B0DB63B6]
-	(No symbol) [0x00007FF6B0DE6490]
-	(No symbol) [0x00007FF6B0E028F6]
-	(No symbol) [0x00007FF6B0DE5D93]
-	(No symbol) [0x00007FF6B0DB4BDC]
-	(No symbol) [0x00007FF6B0DB5C64]
-	GetHandleVerifier [0x00007FF6B12DE16B+3695259]
-	GetHandleVerifier [0x00007FF6B1336737+4057191]
-	GetHandleVerifier [0x00007FF6B132E4E3+4023827]
-	GetHandleVerifier [0x00007FF6B10004F9+689705]
-	(No symbol) [0x00007FF6B0EDC048]
-	(No symbol) [0x00007FF6B0ED8044]
-	(No symbol) [0x00007FF6B0ED81C9]
-	(No symbol) [0x00007FF6B0EC88C4]
-	BaseThreadInitThunk [0x00007FFDAC3D257D+29]
-	RtlUserThreadStart [0x00007FFDAE3EAA58+40]
-
-]]>
-</error><system-out>
+</system-out></testcase><testcase classname="features.add_reviewer_data.Add Reviewer Data" name="Add an Existing Reviewer" status="passed" time="2.952765"><system-out>
 <![CDATA[
 @scenario.begin
   Scenario: Add an Existing Reviewer
-    Given i am on List Reviewer Page ... passed in 2.146s
-    When i press Add button ... passed in 0.046s
-    And i see Add Reviewer Form ... passed in 0.044s
-    And i fill in Add Reviewer Form with Full Name, Email, Institution, Scopus ID, dan Scholar ID ... failed in 0.142s
-    And i press Save ... skipped in 0.000s
-    Then the response should not contain Add Success ... skipped in 0.000s
-    And the response should contain Reviewer Already Exist ... skipped in 0.000s
+    Given i am on List Reviewer Page ... passed in 2.526s
+    When i press Add button ... passed in 0.010s
+    And i see Add Reviewer Form ... passed in 0.039s
+    And i fill in Add Reviewer Form with Full Name, Email that already exist, Scopus ID, dan Scholar ID ... passed in 0.284s
+    And i press Save ... passed in 0.083s
+    Then the response should contain Reviewer with this email already Exist ... passed in 0.011s
 
 @scenario.end
 --------------------------------------------------------------------------------

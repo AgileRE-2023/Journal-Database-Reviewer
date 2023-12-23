@@ -5,23 +5,24 @@ from django.test import Client
 from selenium import webdriver
 # from common_steps import *
 
-# @given("I am on List Reviewer Page")
-# def step_impl(context):
-#     context.client = Client()
-#     context.browser = webdriver.Chrome()  # Use the appropriate WebDriver for your browser
-#     context.browser.get('http://localhost:8000/reviewer/')
+@given("I am on List Reviewer Page")
+def step_impl(context):
+    context.client = Client()
+    context.browser = webdriver.Chrome()  # Use the appropriate WebDriver for your browser
+    context.browser.get('http://localhost:8000/reviewer/')
 
 # @given("and i should see list reviewer")
 # def step_impl(context):
 
 @when("I press edit button on one reviewer from list reviewer")
 def step_impl(context):
-    edit_button = context.browser.find_element(By.CLASS_NAME, 'bi bi-pencil-square')
+    edit_button = context.browser.find_element(By.CLASS_NAME, 'bi-pencil-square')
     edit_button.click()
 
 @when("i see edit reviewer form")
 def step_impl(context):
-    context.browser.get('http://localhost:8000/reviewer/') #gtw
+    edit_button = context.browser.find_element(By.CLASS_NAME, 'bi-pencil-square')
+    edit_button.click()
 
 @when("i fill in Edit Reviewer Form with the latest data")
 def step_impl(context):

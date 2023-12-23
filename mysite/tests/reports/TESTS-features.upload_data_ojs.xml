@@ -1,41 +1,41 @@
-<testsuite name="features.upload_data_ojs.Upload OJS Data" tests="3" errors="0" failures="0" skipped="0" time="9.409508" timestamp="2023-11-23T09:19:24.940607" hostname="LAPTOP-AUQQESOB"><testcase classname="features.upload_data_ojs.Upload OJS Data" name="Upload OJS Data" status="passed" time="4.265167"><system-out>
+<testsuite name="features.upload_data_ojs.Upload OJS Data" tests="3" errors="0" failures="0" skipped="0" time="11.76057" timestamp="2023-12-23T14:14:17.375705" hostname="LAPTOP-AUQQESOB"><testcase classname="features.upload_data_ojs.Upload OJS Data" name="Upload OJS Data" status="passed" time="5.815477"><system-out>
 <![CDATA[
 @scenario.begin
   Scenario: Upload OJS Data
-    Given i am on Upload Data OJS Page ... passed in 2.308s
-    And i see Upload OJS Form ... passed in 0.074s
-    When i attach the file DataOJS.xlsx to Upload OJS Form ... passed in 0.092s
-    And i press Save and Continue ... passed in 1.772s
-    Then the response should contain Upload Success ... passed in 0.016s
-    And i should be on Upload Data OJS Page ... passed in 0.004s
+    Given i am on Upload Data OJS Page ... passed in 2.832s
+    And i see Upload OJS Form ... passed in 0.133s
+    When i attach the file DataOJS.xlsx to Upload OJS Form ... passed in 0.152s
+    And i press Save and Continue ... passed in 2.683s
+    Then the response should contain Upload Success ... passed in 0.011s
+    And i should be on Upload Data OJS Page ... passed in 0.005s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.upload_data_ojs.Upload OJS Data" name="Upload OJS data files that are not excel" status="passed" time="2.524162"><system-out>
+</system-out></testcase><testcase classname="features.upload_data_ojs.Upload OJS Data" name="Upload OJS data files that are not excel" status="passed" time="2.96783"><system-out>
 <![CDATA[
 @scenario.begin
   Scenario: Upload OJS data files that are not excel
-    Given i am on Upload Data OJS Page ... passed in 2.261s
-    And i see Upload OJS Form ... passed in 0.051s
-    When i attach the file DataOJS.pdf to Upload OJS Form ... passed in 0.137s
-    And i press Save and Continue ... passed in 0.059s
+    Given i am on Upload Data OJS Page ... passed in 2.651s
+    And i see Upload OJS Form ... passed in 0.077s
+    When i attach the file DataOJS.pdf to Upload OJS Form ... passed in 0.159s
+    And i press Save and Continue ... passed in 0.063s
     Then the response should contain Upload Error ... passed in 0.013s
-    And i should be on Upload Data OJS Page ... passed in 0.003s
+    And i should be on Upload Data OJS Page ... passed in 0.006s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="features.upload_data_ojs.Upload OJS Data" name="Upload OJS data files that are excel but in wrong format" status="passed" time="2.620178"><system-out>
+</system-out></testcase><testcase classname="features.upload_data_ojs.Upload OJS Data" name="Upload OJS data files that are excel but in wrong format" status="passed" time="2.977262"><system-out>
 <![CDATA[
 @scenario.begin
   Scenario: Upload OJS data files that are excel but in wrong format
-    Given i am on Upload Data OJS Page ... passed in 2.184s
-    And i see Upload OJS Form ... passed in 0.061s
-    When i attach the file DataOJS.xlsx to Upload OJS Form in wrong format ... passed in 0.126s
-    And i press Save and Continue ... passed in 0.235s
-    Then the response should contain Upload Failed ... passed in 0.011s
-    And i should be on Upload Data OJS Page ... passed in 0.004s
+    Given i am on Upload Data OJS Page ... passed in 2.513s
+    And i see Upload OJS Form ... passed in 0.078s
+    When i attach the file DataOJS.xlsx to Upload OJS Form in wrong format ... passed in 0.097s
+    And i press Save and Continue ... passed in 0.267s
+    Then the response should contain Upload Failed ... passed in 0.017s
+    And i should be on Upload Data OJS Page ... passed in 0.006s
 
 @scenario.end
 --------------------------------------------------------------------------------
