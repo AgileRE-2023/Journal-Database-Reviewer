@@ -50,15 +50,14 @@ def edit(request):
     if request.method == "POST":
         reviewer_id = request.POST.get("reviewer_id")
         reviewer = Reviewer.objects.get(reviewer_id=reviewer_id)
-        # breakpoint()
         reviewer.name = request.POST.get("name")
         reviewer.email = request.POST.get("email")
-        # reviewer.institution = request.POST.get('institution')
         reviewer.scopus_id = request.POST.get("scopus_id")
         reviewer.scholar_id = request.POST.get("scholar_id")
 
         reviewer.save()
-
+        
+        messages.success(request, "Reviewer edited successfully")
         return redirect("reviewer:reviewer_list")
 
 
