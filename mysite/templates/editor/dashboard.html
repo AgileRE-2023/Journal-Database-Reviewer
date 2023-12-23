@@ -242,7 +242,7 @@
             <p>Last scraped: {{ reviewer.scrapping_date|date:"d/m/Y" }} </p>
             <form action="{% url "reviewer_scrapping" %}">
               <button type="submit">
-                <div class="border-2 px-4 py-0.5 rounded-lg border-black">Go</div>
+                <div class="border-2 px-4 py-0.5 rounded-lg border-black reviewer-btn">Go</div>
               </button>
             </form>
           </div>
@@ -256,7 +256,7 @@
             <p>Last scraped: {{ journal.scrapping_date|date:"d/m/Y" }} </p>
             <form action="{% url 'journal_scrapping' %}">
               <button type="submit">
-                <div class="border-2 px-4 py-0.5 rounded-lg border-black">Go</div>
+                <div class="border-2 px-4 py-0.5 rounded-lg border-black journal-btn">Go</div>
               </button>
             </form>
           </div>

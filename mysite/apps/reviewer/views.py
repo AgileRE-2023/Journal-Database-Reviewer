@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from apps.master.models import Journal, Reviewer
@@ -25,16 +26,23 @@ def add(request):
         # institution = request.POST.get('institution')
         scopus_id = request.POST.get("scopus_id")
         scholar_id = request.POST.get("scholar_id")
+        
+        existing_reviewer = Reviewer.objects.filter(email=email).first()
 
-        reviewer = Reviewer(
-            name=fullname,
-            email=email,
-            # institution=institution,
-            scopus_id=scopus_id,
-            scholar_id=scholar_id,
-        )
+        if existing_reviewer:
+        # User already exists, show an error message
+            messages.error(request, 'Reviewer with this email already exists.')
+        else:
+            reviewer = Reviewer(
+                name=fullname,
+                email=email,
+                # institution=institution,
+                scopus_id=scopus_id,
+                scholar_id=scholar_id,
+            )
 
-        reviewer.save()
+            reviewer.save()
+            messages.success(request, "Reviewer added successfully.")
         return redirect("reviewer:reviewer_list")
 
 

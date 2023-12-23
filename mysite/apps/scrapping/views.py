@@ -23,7 +23,7 @@ client = ElsClient(api_key=config["apikey"])
 
 
 async def reviewerScrapping(request):
-    reviewers = Reviewer.objects.filter(scopus_id__isnull=True)[:10]
+    reviewers = Reviewer.objects.filter(scopus_id__isnull=True)[:5]
 
     start = time.perf_counter()
     # response = await searchAuthorData(reviewers)
@@ -109,7 +109,7 @@ def scraping_jurnal(request):
     }
 
     counter = []
-    for reviewer in reviewers[0:3]:
+    for reviewer in reviewers[0:2]:
         author_author_id = reviewer.scopus_id
         # find scopus_id berdasarkan author_id
         if author_author_id:
