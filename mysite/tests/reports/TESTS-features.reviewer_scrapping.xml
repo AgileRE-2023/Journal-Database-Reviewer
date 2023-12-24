@@ -1,0 +1,13 @@
+<testsuite name="features.reviewer_scrapping.Reviewer Scrapping" tests="1" errors="0" failures="0" skipped="0" time="3.41903" timestamp="2023-12-24T09:00:45.201292" hostname="LAPTOP-AUQQESOB"><testcase classname="features.reviewer_scrapping.Reviewer Scrapping" name="Scrapping Reviewer" status="passed" time="3.41903"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Scrapping Reviewer
+    Given i am on Dashboard ... passed in 3.213s
+    And i see Reviewer Scrapping ... passed in 0.069s
+    When i press Go ... passed in 0.125s
+    Then the response should contain Scrapping Success ... passed in 0.012s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>
