@@ -1,0 +1,13 @@
+<testsuite name="features.journal_scrapping.Journal Scrapping" tests="1" errors="0" failures="0" skipped="0" time="4.920665" timestamp="2023-12-24T09:05:28.559084" hostname="LAPTOP-AUQQESOB"><testcase classname="features.journal_scrapping.Journal Scrapping" name="Scrapping Journal" status="passed" time="4.920665"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Scrapping Journal
+    Given i am on Dashboard ... passed in 4.726s
+    And i see Journal Scrapping ... passed in 0.053s
+    When i press Go ... passed in 0.122s
+    Then the response should contain Scrapping Success ... passed in 0.019s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

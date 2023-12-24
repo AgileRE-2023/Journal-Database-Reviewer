@@ -31,12 +31,12 @@ def step(context):
     
     assert "Reviewer Scraping" in elements, f"Expected Reviewer Scrapping in page source"
     
-@when("i press Go")
-def step(context):
-    goBtn = context.browser.find_element(By.CLASS_NAME, "reviewer-btn")
-    goBtn.click()
+# @when("i press Go")
+# def step(context):
+#     goBtn = context.browser.find_element(By.CLASS_NAME, "reviewer-btn")
+#     goBtn.click()
     
-@then("The response should contain Scrapping Success")
-def step(context):
-    message = context.browser.find_element(By.CLASS_NAME, "success")
-    assert message , f"Response should contain Upload Success, got {message}"
+# @then("The response should contain Scrapping Success")
+# def step(context):
+#     message = context.browser.find_element(By.CLASS_NAME, "success")
+#     assert message , f"Response should contain Upload Success, got {message}"
