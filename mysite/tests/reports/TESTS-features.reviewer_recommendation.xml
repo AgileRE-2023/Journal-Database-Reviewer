@@ -1,0 +1,15 @@
+<testsuite name="features.reviewer_recommendation.Search Recommendation Reviewer" tests="1" errors="0" failures="0" skipped="0" time="20.558839" timestamp="2023-12-24T09:25:51.964804" hostname="LAPTOP-AUQQESOB"><testcase classname="features.reviewer_recommendation.Search Recommendation Reviewer" name="Search Recommendation Reviewer" status="passed" time="20.558839"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Search Recommendation Reviewer
+    Given i am on Search Recommendation Reviewer Page ... passed in 2.288s
+    And i should see Journal Submission Form ... passed in 0.027s
+    When i fill in Journal Submission Form with Title and Abstract ... passed in 0.543s
+    And i press Save and Continue ... passed in 17.688s
+    Then i should see Recommendation Reviewer Page ... passed in 0.006s
+    And i should see list of recommended reviewer ... passed in 0.008s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

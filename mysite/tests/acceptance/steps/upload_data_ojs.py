@@ -66,9 +66,9 @@ def step_impl(context):
     # breakpoint()
     
     
-@when("I press Save and Continue")
-def step_impl(context):
-    context.browser.find_element(By.CSS_SELECTOR, "input[type='submit']").click()
+# @when("I press Save and Continue")
+# def step_impl(context):
+#     context.browser.find_element(By.CSS_SELECTOR, "input[type='submit']").click()
     
 @then("The response should contain Upload Success")
 def step_impl(context):
