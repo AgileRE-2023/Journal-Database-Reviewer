@@ -1,8 +1,8 @@
-Certainly! Below is a basic outline for your README file:
-
 # Journal Database Reviewer
 
 Journal Database Reviewer is a Django project for managing and reviewing journal databases.
+
+You can refer to this [User Guide](https://drive.google.com/file/d/1C1ZLIWkBTLIFC2VH31341BiJNBIf2JO9/view?usp=sharing) as a guide on how to use this application
 
 ## Setup Instructions
 
