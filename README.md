@@ -6,25 +6,48 @@ You can refer to this [User Guide](https://drive.google.com/file/d/1C1ZLIWkBTLIF
 
 ## Setup Instructions
 
-Great! If you are using the `django-tailwind` package for integrating Tailwind CSS with Django, here's an updated set of instructions:
+### 1. Create Virtual Env using python
 
-### 1. Clone the Repository
+Install your python venv package first
+
+```bash
+    pip install virtualenv
+```
+
+Then, create your virtual env with
+
+```bash
+    python -m venv venv
+```
+
+To activate the virtual env use
+
+- In powershell
+
+```bash
+    venv/Scripts/Activate.ps1
+```
+
+- In powershell
+
+```bash
+    venv/Scripts/Activate.bat
+```
+
+### 2. Clone the Repository
 
 ```bash
 git clone https://github.com/your-username/Journal-Database-Reviewer.git
 cd Journal-Database-Reviewer
 ```
 
-### 2. Install Dependencies
-
-Make sure you have MySQL installed on your system. You'll also need to install the MySQL client library for Python and the `django-tailwind` package. You can do this using:
+### 3. Install Dependencies
 
 ```bash
-pip install mysqlclient
-pip install django-tailwind
+pip install -r path/to/requirements.txt
 ```
 
-### 3. Configure `settings.py`
+### 4. Configure `settings.py`
 
 Edit the `settings.py` file to configure the MySQL database and Tailwind CSS settings using `django-tailwind`.
 
@@ -58,7 +81,7 @@ https://django-tailwind.readthedocs.io/en/latest/installation.html
 
 Replace `'your_database_name'`, `'your_database_user'`, and `'your_database_password'` with your MySQL database name, user, and password.
 
-### 4. Configure Django Tailwind
+### 5. Configure Django Tailwind
 
 Add the following lines to your `settings.py` to configure `django-tailwind`:
 
@@ -78,7 +101,17 @@ TAILWIND_SETTINGS = {
 }
 ```
 
-### 5. Migrate the Database
+### 6. Config Your Elsevier API Key
+
+You need to get the Elsevier API Key [here](https://dev.elsevier.com/apikey/create)
+
+Then, you can put the API Key in the .env file with key
+
+```bash
+    SCOPUS_API_KEY=<YOUR_KEY>
+```
+
+### 7. Migrate the Database
 
 Run the following commands to apply database migrations:
 
@@ -87,7 +120,7 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-### 6. Run the Django Server
+### 8. Run the Django Server
 
 Start the Django development server:
 
