@@ -26,6 +26,7 @@ client = ElsClient(scopus_key)
 
 
 async def reviewerScrapping(request):
+    #Limit the scrapped reviewer data only for 10 reviewer
     reviewers = Reviewer.objects.filter(scopus_id__isnull=True)[:10]
 
     start = time.perf_counter()
@@ -56,14 +57,18 @@ def create_scrapping(request):
     scrapping = Scrapping(editor_id=request.user.editor_id)
     scrapping.save()
     return redirect('dashboard')
-
+        
 
 async def index(request):
-    result = await reviewerScrapping(request)
-    messages.success(
-        request,
-        f"Updated {result['responses']} Reviewer Scopus ID, takes {result['end'] - result['start']:0.1f} seconds",
-    )
+    try:
+        result = await reviewerScrapping(request)
+        messages.success(
+            request,
+            f"Updated {result['responses']} Reviewer Scopus ID, takes {result['end'] - result['start']:0.1f} seconds",
+        )
+    except:
+        messages.error(request, "Error when scrapping reviewer data")
+        
     return redirect("create scrapping")
 
 
@@ -102,69 +107,64 @@ def getReviewerBatches(reviewers, offset):
 
 
 def scraping_jurnal(request):
-    reviewers = Reviewer.objects.all()
-    editor = Editor.objects.get(editor_id=request.user.editor_id)
-    # client = ElsClient("6aed794eb40c72d178d4e29b1e64ae51")
-    api_endpoint = "https://api.elsevier.com/content/abstract/scopus_id/"
-    headers = {
-        "X-ELS-APIKey": scopus_key,
-        "Accept": "application/json",
-    }
+    try:
+        reviewers = Reviewer.objects.all()
+        editor = Editor.objects.get(editor_id=request.user.editor_id)
+        api_endpoint = "https://api.elsevier.com/content/abstract/scopus_id/"
+        headers = {
+            "X-ELS-APIKey": scopus_key,
+            "Accept": "application/json",
+        }
 
-    counter = []
-    for reviewer in reviewers[0:3]:
-        author_author_id = reviewer.scopus_id
-        # find scopus_id berdasarkan author_id
-        if author_author_id:
-            journal_search_query = "AU-ID({})".format(author_author_id)
-            journal_search = ElsSearch(journal_search_query, "scopus")
-            journal_search.execute(client)
-            journal_results = journal_search.results
-            # send request menggunakan scopus_id untuk melakukan scraping jurnal
-            for result in journal_results:
-                scopus_id = result.get("dc:identifier", "").split(":")[-1]
-                if scopus_id:
-                    response = requests.get(
-                        f"{api_endpoint}{scopus_id}", headers=headers
-                    )
-                    if response.status_code == 200:
-                        data = response.json()
-                        abstract = (
-                            data.get("abstracts-retrieval-response", {})
-                            .get("coredata", {})
-                            .get("dc:description")
+        counter = []
+        #Limit the scrap data only for 3 author
+        for reviewer in reviewers[0:3]:
+            author_author_id = reviewer.scopus_id
+            # find scopus_id berdasarkan author_id
+            if author_author_id:
+                journal_search_query = "AU-ID({})".format(author_author_id)
+                journal_search = ElsSearch(journal_search_query, "scopus")
+                journal_search.execute(client)
+                journal_results = journal_search.results
+                # send request menggunakan scopus_id untuk melakukan scraping jurnal
+                for result in journal_results:
+                    scopus_id = result.get("dc:identifier", "").split(":")[-1]
+                    if scopus_id:
+                        response = requests.get(
+                            f"{api_endpoint}{scopus_id}", headers=headers
                         )
-                        title = (
-                            data.get("abstracts-retrieval-response", {})
-                            .get("coredata", {})
-                            .get("dc:title")
-                        )
-                        doi = (
-                            data.get("abstracts-retrieval-response", {})
-                            .get("coredata", {})
-                            .get("prism:doi")
-                        )
-                        # add Jurnal Data ke dalam model Journal
-                        journal, created = Journal.objects.update_or_create(
-                            title=title,
-                            abstrack=abstract,
-                            other=doi,
-                        )
-
-                        journal.reviewer.add(reviewer)
-                        # Simpan journal_id dan reviewer_id pada detail_journal
-                        # detail_entry = detail_journal.objects.create(
-                        #     journal_id=journal,
-                        #     reviewer_id=reviewer
-                        # )
-                        counter.append(1)
-                        # detail_entry.save()
-                    else:
-                        print("")
-    # Simpan log data scraping
-    scraping_data = Scrapping(editor_id=editor.editor_id, isReviewerScrap = False)
-    scraping_data.save()
-    messages.success(request, f"Updated {len(counter)} Abstract")
+                        if response.status_code == 200:
+                            data = response.json()
+                            abstract = (
+                                data.get("abstracts-retrieval-response", {})
+                                .get("coredata", {})
+                                .get("dc:description")
+                            )
+                            title = (
+                                data.get("abstracts-retrieval-response", {})
+                                .get("coredata", {})
+                                .get("dc:title")
+                            )
+                            doi = (
+                                data.get("abstracts-retrieval-response", {})
+                                .get("coredata", {})
+                                .get("prism:doi")
+                            )
+                            # add Jurnal Data ke dalam model Journal
+                            journal, created = Journal.objects.update_or_create(
+                                title=title,
+                                abstrack=abstract,
+                                other=doi,
+                            )
+                            journal.reviewer.add(reviewer)
+                            counter.append(1)
+                        else:
+                            print("")
+        scraping_data = Scrapping(editor_id=editor.editor_id, isReviewerScrap = False)
+        scraping_data.save()
+        messages.success(request, f"Updated {len(counter)} Abstract") 
+    except:
+        messages.error(request, "Error when scrapping journal data")
     return redirect("dashboard")
 
     # return render(request, 'dashboard')
