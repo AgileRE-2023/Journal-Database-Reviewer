@@ -20,11 +20,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Create your views here.
-file = open("config.json")
-
-# config = json.load(file)
-
 scopus_key = os.getenv("SCOPUS_API_KEY")
 
 client = ElsClient(scopus_key)
