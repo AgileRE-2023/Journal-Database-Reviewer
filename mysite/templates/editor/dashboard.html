@@ -95,7 +95,11 @@
           />
         </svg>
         <div class="w-72 mx-auto mb-5 -mt-5">
-          <p class="text-left">Last Synced: {{ upload.upload_date|date:"d/m/Y" }}</p>
+          {% if upload.upload_date is None  %}
+            <p class="text-left">Last Synced: {{ "Data has never been updated" }}</p>
+            {% else %}
+            <p class="text-left">Last Synced: {{ upload.upload_date|date:"d/m/Y" }}</p>
+          {% endif %}
         </div>
         <div class="flex justify-between w-72 mx-auto">
           <a href="{% url "reviewer:reviewer_list" %}">
@@ -239,7 +243,11 @@
         >
           <header class="text-4xl mb-8">Reviewer Scraping</header>
           <div class="flex justify-between items-center px-8">
-            <p>Last scraped: {{ reviewer.scrapping_date|date:"d/m/Y" }} </p>
+            {% if reviewer.scrapping_date is None  %}
+              <p class="text-left">Last Synced: {{ "Data has never been updated" }}</p>
+            {% else %}
+              <p class="text-left">Last Synced: {{ reviewer.scrapping_date|date:"d/m/Y" }}</p>
+            {% endif %}
             <form action="{% url "reviewer_scrapping" %}">
               <button type="submit">
                 <div class="border-2 px-4 py-0.5 rounded-lg border-black">Go</div>
@@ -253,7 +261,11 @@
         >
           <header class="text-4xl mb-8">Journal Scraping</header>
           <div class="flex justify-between items-center px-8">
-            <p>Last scraped: {{ journal.scrapping_date|date:"d/m/Y" }} </p>
+            {% if journal.scrapping_date is None  %}
+              <p class="text-left">Last Synced: {{ "Data has never been updated" }}</p>
+            {% else %}
+              <p class="text-left">Last Synced: {{ journal.scrapping_date|date:"d/m/Y" }}</p>
+            {% endif %}
             <form action="{% url 'journal_scrapping' %}">
               <button type="submit">
                 <div class="border-2 px-4 py-0.5 rounded-lg border-black">Go</div>
