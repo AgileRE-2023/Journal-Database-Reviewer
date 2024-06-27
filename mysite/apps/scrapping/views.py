@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from elsapy.elsclient import ElsClient
 from elsapy.elssearch import ElsSearch
 from django.contrib import messages
+import os
 from ..master.models import Editor, Reviewer, Journal, Scrapping
 from django.utils import timezone
 import requests
@@ -14,12 +15,19 @@ import asyncio
 from asgiref.sync import sync_to_async
 from apps.master.models import Reviewer
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # Create your views here.
 file = open("config.json")
 
-config = json.load(file)
+# config = json.load(file)
 
-client = ElsClient(api_key=config["apikey"])
+scopus_key = os.getenv("SCOPUS_API_KEY")
+
+client = ElsClient(scopus_key)
 
 
 async def reviewerScrapping(request):
@@ -101,10 +109,10 @@ def getReviewerBatches(reviewers, offset):
 def scraping_jurnal(request):
     reviewers = Reviewer.objects.all()
     editor = Editor.objects.get(editor_id=request.user.editor_id)
-    client = ElsClient("6aed794eb40c72d178d4e29b1e64ae51")
+    # client = ElsClient("6aed794eb40c72d178d4e29b1e64ae51")
     api_endpoint = "https://api.elsevier.com/content/abstract/scopus_id/"
     headers = {
-        "X-ELS-APIKey": "6aed794eb40c72d178d4e29b1e64ae51",
+        "X-ELS-APIKey": scopus_key,
         "Accept": "application/json",
     }
 
