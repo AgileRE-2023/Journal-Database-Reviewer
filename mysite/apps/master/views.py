@@ -86,7 +86,6 @@ def signin(request):
         password = form.data["password"]
         user = authenticate(request, email=email, password=password)
         if user is not None:
-            # breakpoint()
             login(request, user)
             return redirect("dashboard")
         else:

@@ -5,6 +5,7 @@ from apps.master.models import Journal, Reviewer
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
+import requests
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -62,6 +63,7 @@ def submission(request):
     if request.method == "POST":
         title_input = request.POST.get("title")
         abstract_input = request.POST.get("abstract")
+        
         combined_input = "{}. {}".format(title_input, abstract_input)
 
         # Preprocessing data input
