@@ -4,6 +4,9 @@ Journal Database Reviewer is a Django project for managing and reviewing journal
 
 You can refer to this [User Guide](https://drive.google.com/file/d/1C1ZLIWkBTLIFC2VH31341BiJNBIf2JO9/view?usp=sharing) as a guide on how to use this application
 
+> [!IMPORTANT]
+> You can only do the scrapping from network that has affiliate with SCOPUS
+
 ## Setup Instructions
 
 ### 1. Create Virtual Env using python
