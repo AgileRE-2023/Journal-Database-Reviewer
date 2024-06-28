@@ -46,13 +46,31 @@ cd Journal-Database-Reviewer
 
 ### 3. Install Dependencies
 
+Install all the package you needed with
+
 ```bash
 pip install -r path/to/requirements.txt
+```
+
+Then, install nltk extension with
+
+```bash
+python -m nltk.downloader all
 ```
 
 ### 4. Configure `settings.py`
 
 Edit the `settings.py` file to configure the MySQL database and Tailwind CSS settings using `django-tailwind`.
+
+You can put your database name, user, password, host, and port in the .env
+
+```bash
+DB_NAME=<YOUR DB NAME>
+DB_USER=<YOUR DB USER>
+DB_PASSWORD=<USER DB PASSWORD>
+DB_HOST=<YOUR DB IP ADDRESS>
+DB_PORT=<YOUR DB PORT>
+```
 
 ```python
 # settings.py
@@ -61,11 +79,7 @@ Edit the `settings.py` file to configure the MySQL database and Tailwind CSS set
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'your_database_name',
-        'USER': 'your_database_user',
-        'PASSWORD': 'your_database_password',
-        'HOST': 'localhost',  # Set to the address of your MySQL server
-        'PORT': '3306',       # Set to the port of your MySQL server
+        #...
     }
 }
 
@@ -81,8 +95,6 @@ TAILWIND_APP_NAME = 'yourapp'  # Replace 'yourapp' with the name of your Django-
 
 For more instruction about django-tailwind installations:
 https://django-tailwind.readthedocs.io/en/latest/installation.html
-
-Replace `'your_database_name'`, `'your_database_user'`, and `'your_database_password'` with your MySQL database name, user, and password.
 
 ### 5. Configure Django Tailwind
 
