@@ -31,7 +31,7 @@ To activate the virtual env use
     venv/Scripts/Activate.ps1
 ```
 
-- In powershell
+- In command prompt
 
 ```bash
     venv/Scripts/Activate.bat
