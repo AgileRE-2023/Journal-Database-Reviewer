@@ -1,4 +1,4 @@
-# Journal Database Reviewer
+![image](https://github.com/AgileRE-2023/Journal-Database-Reviewer/assets/11233472/3bd44ebe-10f2-4020-8921-1965c3a76361)# Journal Database Reviewer
 
 Journal Database Reviewer is a Django project for managing and reviewing journal databases.
 
@@ -146,3 +146,10 @@ python manage.py runserver
 The development server will be accessible at [http://localhost:8000/](http://localhost:8000/).
 
 Make sure to adjust the MySQL connection settings according to your MySQL setup. Additionally, ensure that you have the necessary permissions to create and manage databases.
+
+
+This project is part of the final project for the Software Development course (2023/2024) in the Bachelor of Information Systems at Universitas Airlangga.  
+Supervisor/Product owners: Indra Kharisma Raharjana, Badrus Zaman
+Project Manager/Team Leader: Rizfi Ferdiansyah
+Team Members: Aretha Seno Putri, Fariska Dwi Kartika Sari, Uswatun Nurjanah, Eka Prasetiya Wahyuningsih, William Tanardi, Daffa Farhan Raharja, Praja Muhammad Purnayuda, and Florentina Trista.
+
