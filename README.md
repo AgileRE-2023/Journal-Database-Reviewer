@@ -40,7 +40,7 @@ To activate the virtual env use
 ### 2. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/Journal-Database-Reviewer.git
+git clone https://github.com/AgileRE-2023/Journal-Database-Reviewer.git
 cd Journal-Database-Reviewer
 ```
 
@@ -49,7 +49,7 @@ cd Journal-Database-Reviewer
 Install all the package you needed with
 
 ```bash
-pip install -r path/to/requirements.txt
+pip install -r requirements.txt
 ```
 
 Then, install nltk extension with
